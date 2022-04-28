@@ -31,15 +31,67 @@ body {
 ol, ul {
 	list-style: none;
 }
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+button {
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	overflow: visible;
+
+	background: transparent;
+
+	/* inherit font & color from ancestor */
+	color: inherit;
+	font: inherit;
+
+	/* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+	line-height: normal;
+
+	/* Corrects font smoothing for webkit */
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+
+	/* Corrects inability to style clickable `input` types in iOS */
+	-webkit-appearance: none;
+}
+
+/*Fonts*/
+
+@font-face {
+	font-family: 'Antonio';
+	src: url(../../assets/fonts/Antonio-Medium.ttf);
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Spartan';
+	src: url('../../assets/fonts/Spartan-Regular.ttf');
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Spartan';
+	src: url('../../assets/fonts/Spartan-Bold.ttf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+/*My CSS*/
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: url('../../assets/images/background-stars.svg') #070724;
+}
+
+.link {
+	text-decoration: none;
+	display: block;
 }
