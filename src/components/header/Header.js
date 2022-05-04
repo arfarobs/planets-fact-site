@@ -3,16 +3,16 @@ import './Header.css';
 import chevron from '../../assets/images/icon-chevron.svg';
 import hamburger from'../../assets/images/icon-hamburger.svg';
 
-export const Header = () => {
+export const Header = (props) => {
   return (
     <header className="header">
       <Link className="link" to="/">
         <h1>The Planets</h1>
       </Link>
-      <button id="planet-menu-btn">
+      <button id="planet-menu-btn" onClick={props.onClick}>
         <img src={hamburger} alt="Menu" />
       </button>
-      <nav className="planet-nav">
+      <nav id="planet-nav">
         <ul>
           <li>
             <Link className="planet-link link" to="/">

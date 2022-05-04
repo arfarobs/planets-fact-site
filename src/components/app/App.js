@@ -9,11 +9,29 @@ import { Saturn } from '../planets/saturn/Saturn';
 import { Uranus } from '../planets/uranus/Uranus';
 import { Neptune } from '../planets/neptune/Neptune';
 import { Routes, Route } from 'react-router-dom';
+import { React, useState } from 'react';
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    const menu = document.getElementById('planet-nav');
+    if (menuOpen) {
+      menu.classList.remove('fade-in');
+      menu.classList.add('fade-out');
+      setTimeout(() => {
+        menu.classList.remove('fade-out');
+      }, 2000);
+    } else {
+      menu.classList.remove('fade-out');
+      menu.classList.add('fade-in');
+    }
+    menuOpen ? setMenuOpen(false) : setMenuOpen(true);
+  };
+
   return (
     <>
-      <Header />
+      <Header onClick={toggleMenu} />
       <main>
         <Routes>
           <Route path="/" element={<Mercury />} />
