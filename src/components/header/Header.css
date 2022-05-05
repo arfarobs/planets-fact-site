@@ -166,6 +166,11 @@ h1 {
     letter-spacing: 1px;
     color: #FFFFFF;
     cursor: pointer;
+    opacity: 0.75;
+  }
+
+  .planet-link:hover, .planet-link:focus-visible {
+    opacity: 1;
   }
 }
 
@@ -180,5 +185,20 @@ h1 {
 
   #planet-nav {
     margin: 33px 40px 27px 0;
+  }
+
+  .planet-link::before {
+    background: #419EBB;
+    min-height: 4px;
+    content: '';
+    display: block;
+    width: 0px;
+    position: relative;
+    top: -33px;
+  }
+
+  .planet-link:hover::before, .planet-link:focus-visible::before {
+    width: 100%;
+    transition: width 0.5s ease-in-out;
   }
 }
