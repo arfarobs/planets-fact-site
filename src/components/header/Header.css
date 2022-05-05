@@ -197,7 +197,7 @@ h1 {
     top: -33px;
   }
 
-  .planet-link:hover::before, .planet-link:focus-visible::before {
+  .planet-link:hover::before, .planet-link:focus::before {
     width: 100%;
     transition: width 0.5s ease-in-out;
   }
