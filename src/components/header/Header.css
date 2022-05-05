@@ -124,3 +124,49 @@ h1 {
   right: 8px;
   top: 28.5px;
 }
+
+@media only screen and (min-width: 768px) {
+  header {
+    display: block;
+    width: 100%;
+  }
+
+  h1 {
+    margin: 32px auto 39px;
+    width: 109px;
+    padding: 0;
+  }
+
+  #planet-menu-btn, .planet-link-icon, .chevron {
+    display: none;
+  }
+
+  #planet-nav {
+    display: block;
+    opacity: 1;
+    position: relative;
+    padding: 0;
+    top: 0;
+    background: none;
+    width: 665px;
+    margin: 0 auto 27px;
+  }
+
+  #planet-nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .planet-link {
+    padding: 0;
+    border: none;
+    display: inline;
+    font-size: 11px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+
+}
