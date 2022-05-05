@@ -16,15 +16,19 @@ function App() {
 
   const toggleMenu = () => {
     const menu = document.getElementById('planet-nav');
+    const main = document.querySelector('main');
     if (menuOpen) {
       menu.classList.remove('fade-in');
       menu.classList.add('fade-out');
+      main.classList.remove('fade-out');
+      main.classList.add('fade-in');
       setTimeout(() => {
         menu.classList.remove('fade-out');
       }, 2000);
     } else {
       menu.classList.remove('fade-out');
       menu.classList.add('fade-in');
+      main.classList.add('fade-out');
     }
     menuOpen ? setMenuOpen(false) : setMenuOpen(true);
   };

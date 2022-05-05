@@ -56,6 +56,11 @@ h2 {
 }
 
 .info-nav-item {
+  padding: 20px 0 16px;
+  opacity: 0.5;
+}
+
+.info-nav-button {
   font-family: 'Spartan';
   font-weight: 700;
   font-size: 9px;
@@ -63,15 +68,13 @@ h2 {
   text-align: center;
   letter-spacing: 1.92857px;
   text-transform: uppercase;
-  padding: 20px 0 16px;
-  opacity: 0.5;
 }
 
-#selected-info-nav-item {
+.selected-info-nav-item {
   opacity: 1;
 }
 
-#selected-info-nav-item::after {
+.selected-info-nav-item::after {
   background: #419EBB;
   min-height: 4px;
   content: '';
