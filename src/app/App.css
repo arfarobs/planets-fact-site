@@ -63,20 +63,20 @@ button {
 
 @font-face {
 	font-family: 'Antonio';
-	src: url(../../assets/fonts/Antonio-Medium.ttf);
+	src: url(../assets/fonts/Antonio-Medium.ttf);
 	font-weight: 500;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Spartan';
-	src: url('../../assets/fonts/Spartan-Regular.ttf');
+	src: url('../assets/fonts/Spartan-Regular.ttf');
 	font-weight: 400;
 	font-display: swap;
 }
 @font-face {
 	font-family: 'Spartan';
-	src: url('../../assets/fonts/Spartan-Bold.ttf');
+	src: url('../assets/fonts/Spartan-Bold.ttf');
 	font-weight: 700;
 	font-display: swap;
 }
@@ -88,7 +88,7 @@ button {
 }
 
 body {
-	background: url('../../assets/images/background-stars.svg') center #070724;
+	background: url('../assets/images/background-stars.svg') center #070724;
 }
 
 .link {
