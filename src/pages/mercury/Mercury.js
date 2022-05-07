@@ -1,5 +1,5 @@
 import './Mercury.css';
-import mercury from '../../../assets/images/planets/planet-mercury.svg';
+
 
 export const Mercury = () => {
   const changeInfo = (e) => {
@@ -25,7 +25,6 @@ export const Mercury = () => {
   return (
     <>
       <article>
-        <img className="planet-img" src={mercury} alt="Mercury" />
         <div className="info-container">
           <h2>Mercury</h2>
           <p className='info-p'>

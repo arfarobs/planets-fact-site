@@ -1,13 +1,13 @@
 import './App.css';
 import { Header } from '../header/Header';
-import { Mercury } from '../planets/mercury/Mercury';
-import { Venus } from '../planets/venus/Venus';
-import { Earth } from '../planets/earth/Earth';
-import { Mars } from '../planets/mars/Mars';
-import { Jupiter } from '../planets/jupiter/Jupiter';
-import { Saturn } from '../planets/saturn/Saturn';
-import { Uranus } from '../planets/uranus/Uranus';
-import { Neptune } from '../planets/neptune/Neptune';
+import { Mercury } from '../../pages/mercury/Mercury';
+import { Venus } from '../../pages/venus/Venus';
+import { Earth } from '../../pages/earth/Earth';
+import { Mars } from '../../pages/mars/Mars';
+import { Jupiter } from '../../pages/jupiter/Jupiter';
+import { Saturn } from '../../pages/saturn/Saturn';
+import { Uranus } from '../../pages/uranus/Uranus';
+import { Neptune } from '../../pages/neptune/Neptune';
 import { Routes, Route } from 'react-router-dom';
 import { React, useState } from 'react';
 
