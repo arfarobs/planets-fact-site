@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux';
 
 export const Info = () => {
   const paragraph = useSelector((state) => state.info.paragraph);
+  const heading = useSelector((state) => state.info.currentPage);
 
   return (
     <div className="info-container">
-      <h2>Mercury</h2>
+      <h2>{heading}</h2>
       <p className='info-p'>
         {paragraph}
       </p>
