@@ -1,4 +1,5 @@
 import './Mercury.css';
+import { Img } from '../../components/img/Img';
 
 
 export const Mercury = () => {
@@ -25,6 +26,7 @@ export const Mercury = () => {
   return (
     <>
       <article>
+        <Img />
         <div className="info-container">
           <h2>Mercury</h2>
           <p className='info-p'>
