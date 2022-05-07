@@ -1,0 +1,47 @@
+.info-nav {
+  color: #FFF;
+  position: absolute;
+  top: 69px;
+  width: 100%;
+  border-bottom: 1px rgba(256, 256, 256, 0.2) solid;
+}
+
+.info-nav ul {
+  display: flex;
+  padding: 0 24px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.info-nav-item {
+  padding: 20px 0 16px;
+  opacity: 0.5;
+}
+
+.info-nav-button {
+  font-family: 'Spartan';
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 10px;
+  text-align: center;
+  letter-spacing: 1.92857px;
+  text-transform: uppercase;
+}
+
+.selected-info-nav-item {
+  opacity: 1;
+}
+
+.selected-info-nav-item::after {
+  background: #419EBB;
+  min-height: 4px;
+  content: '';
+  display: block;
+  width: 100%;
+  position: relative;
+  top: 16px;
+}
+
+.info-nav-number {
+  display: none;
+}
