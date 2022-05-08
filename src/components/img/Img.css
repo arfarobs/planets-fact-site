@@ -4,3 +4,7 @@
   height: 111px;
   display: block;
 }
+
+.planet-img-secondary {
+  display: none;
+}
