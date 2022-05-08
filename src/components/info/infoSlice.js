@@ -14,6 +14,7 @@ export const infoSlice = createSlice({
     changeCurrentPage(state, action) {
       state.currentPage = action.payload;
       state.paragraph = data[state.currentPage].paragraph.overview;
+      state.currentSection = 'overview';
     },
     changeParagraph(state, action) {
       state.paragraph = data[state.currentPage].paragraph[action.payload];
