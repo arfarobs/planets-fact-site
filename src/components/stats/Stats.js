@@ -1,24 +1,21 @@
 import './Stats.css';
+import { useSelector } from 'react-redux';
 
 export const Stats = () => {
+  const statsTitles = ['rotation time', 'revolution time', 'radius', 'average temp'];
+  const statsValues = useSelector((state) => state.info.stats);
+  const listItems = statsTitles.map((title, index) => {
+    return (
+    <li className="stats-item">
+      <h4 className="stat-title">{title}</h4>
+      <p className="stat-value">{statsValues[index]}</p>
+    </li>
+  )})
+
   return (
+
     <ul className="stats">
-      <li className="stats-item">
-        <h4 className="stat-title">rotation time</h4>
-        <p className="stat-value">58.6 days</p>
-      </li>
-      <li className="stats-item">
-        <h4 className="stat-title">revolution time</h4>
-        <p className="stat-value">87.97 days</p>
-      </li>
-      <li className="stats-item">
-        <h4 className="stat-title">radius</h4>
-        <p className="stat-value">2439.7 km</p>
-      </li>
-      <li className="stats-item">
-        <h4 className="stat-title">average temp</h4>
-        <p className="stat-value">460 degC</p>
-      </li>
+      {listItems}
     </ul>
   )
 }
