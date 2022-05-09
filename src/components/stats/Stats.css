@@ -34,3 +34,31 @@
   letter-spacing: -0.75px;
   text-transform: uppercase;
 }
+
+@media only screen and (min-width: 768px) {
+  .stats {
+    margin: 0 39.5px 36px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .stats-item {
+    display: block;
+    padding: 16px 15px;
+    margin: 0;
+    width: 164px;
+    height: 88px;
+  }
+
+  .stat-title {
+    padding: 0;
+  }
+  
+  .stat-value {
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: -0.9px;
+    padding: 0;
+    text-align: left;
+  }
+}
