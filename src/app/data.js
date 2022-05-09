@@ -6,6 +6,7 @@ export const data = {
       surface: "Mercury's surface is similar in appearance to that of the Moon, showing extensive mare-like plains and heavy cratering, indicating that it has been geologically inactive for billions of years. It is more heterogeneous than either Mars's or the Moon’s."
     },
     stats: ['58.6 days', '87.97 days', '2439.7 km', '460°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Mercury_(planet)'
   },
   venus: {
     paragraph: {
@@ -14,6 +15,7 @@ export const data = {
       surface: "Much of the Venusian surface appears to have been shaped by volcanic activity. Venus has several times as many volcanoes as Earth, and it has 167 large volcanoes that are over 100 km (60 mi) across. The only volcanic complex of this size on Earth is the Big Island of Hawaii."
     },
     stats: ['2434 days', '224.7 days', '6,051.8 km', '471°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Venus'
   },
   earth: {
     paragraph: {
@@ -22,6 +24,7 @@ export const data = {
       surface: "The total surface area of Earth is about 510 million km2. The continental crust consists of lower density material such as the igneous rocks granite and andesite. Less common is basalt, a denser volcanic rock that is the primary constituent of the ocean floors."
     },
     stats: ['0.99 days', '365.26 days', '6,371 km', '16°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Earth'
   },
   mars: {
     paragraph: {
@@ -30,6 +33,7 @@ export const data = {
       surface: "Mars is a terrestrial planet whose surface consists of minerals containing silicon and oxygen, metals, and other elements that typically make up rock. The surface is primarily composed of tholeiitic basalt, although parts are more silica-rich than typical basalt."
     },
     stats: ['1.03 days', '1.03 days', '3,389.5 km', '−28°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Mars'
   },
   jupiter: {
     paragraph: {
@@ -38,6 +42,7 @@ export const data = {
       surface: "The best known feature of Jupiter is the Great Red Spot, a persistent anticyclonic storm located 22° south of the equator. It is known to have existed since at least 1831, and possibly since 1665."
     },
     stats: ['9.93 hours', '11.86 years', '69,911 km', '-108°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Jupiter'
   },
   saturn: {
     paragraph: {
@@ -46,6 +51,7 @@ export const data = {
       surface: "The outer atmosphere of Saturn contains 96.3% molecular hydrogen and 3.25% helium by volume. The planet's most famous feature is its prominent ring system, which is composed mostly of ice particles with a smaller amount of rocky debris and dust. "
     },
     stats: ['10.8 hours', '29.46 years', '58,232 km', '-138°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Saturn'
   },
   uranus: {
     paragraph: {
@@ -54,6 +60,7 @@ export const data = {
       surface: "The composition of Uranus's atmosphere is different from its bulk, consisting mainly of molecular hydrogen and helium. The helium molar fraction, i.e. the number of helium atoms per molecule of gas, is 0.15±0.03 in the upper troposphere."
     },
     stats: ['17.2 hours', '84 years', '25,362 km', '-195°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Uranus'
   },
   neptune: {
     paragraph: {
@@ -62,5 +69,6 @@ export const data = {
       surface: "Neptune's atmosphere is 80% hydrogen and 19% helium. A trace amount of methane is also present. Prominent absorption bands of methane exist at wavelengths above 600 nm, in the red and infrared portion of the spectrum."
     },
     stats: ['16.08 hours', '164.79 years', '24,622 km', '-201°c'],
+    wikiSrc: 'https://en.wikipedia.org/wiki/Neptune'
   }
 }
