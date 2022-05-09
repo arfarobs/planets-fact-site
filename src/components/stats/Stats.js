@@ -6,14 +6,13 @@ export const Stats = () => {
   const statsValues = useSelector((state) => state.info.stats);
   const listItems = statsTitles.map((title, index) => {
     return (
-    <li className="stats-item">
+    <li className="stats-item" key={index}>
       <h4 className="stat-title">{title}</h4>
       <p className="stat-value">{statsValues[index]}</p>
     </li>
   )})
 
   return (
-
     <ul className="stats">
       {listItems}
     </ul>

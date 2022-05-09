@@ -1,3 +1,7 @@
+:root {
+  --pageColor: #419EBB;
+}
+
 .info-nav {
   color: #FFF;
   position: absolute;
@@ -33,7 +37,7 @@
 }
 
 .selected-info-nav-item::after {
-  background: #419EBB;
+  background: var(--pageColor);
   min-height: 4px;
   content: '';
   display: block;

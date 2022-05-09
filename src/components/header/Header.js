@@ -8,6 +8,31 @@ import { useDispatch } from "react-redux";
 export const Header = (props) => {
   const dispatch = useDispatch();
 
+  const pageColors = ['#419EBB', '#EDA249', '#6D2ED5', '#D14C32', '#D83A34', '#CD5120', '#1EC1A2', '#2D68F0']
+  const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
+
+  const changePageColor = (index) => {
+    document.documentElement.style.setProperty('--pageColor', pageColors[index]);
+  }
+
+  const listItems = planetNames.map((name, index) => {
+    return (
+      <li>
+        <Link 
+          className="planet-link link" 
+          onClick={() => {
+            dispatch(changeCurrentPage(planetNames[index]));
+            changePageColor(index);
+          }} 
+          to={`/${planetNames[index]}`}>
+          <span className="planet-link-icon" id={`${planetNames[index]}-icon`}></span>
+            {planetNames[index]}
+            <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
+        </Link>
+      </li>
+    )
+  })
+
   return (
     <header className="header">
       <Link className="link" to="/">
@@ -18,62 +43,7 @@ export const Header = (props) => {
       </button>
       <nav id="planet-nav">
         <ul>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Mercury'))} to="/">
-              <span className="planet-link-icon" id="mercury-icon"></span>
-              Mercury
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Venus'))} to="/venus">
-              <span className="planet-link-icon" id="venus-icon"></span>
-              Venus
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Earth'))} to="/earth">
-              <span className="planet-link-icon" id="earth-icon"></span>
-              Earth
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Mars'))} to="/mars">
-              <span className="planet-link-icon" id="mars-icon"></span>
-              Mars
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Jupiter'))} to="/jupiter">
-              <span className="planet-link-icon" id="jupiter-icon"></span>
-              Jupiter
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Saturn'))} to="/saturn">
-              <span className="planet-link-icon" id="saturn-icon"></span>
-              Saturn
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Uranus'))} to="/uranus">
-              <span className="planet-link-icon" id="uranus-icon"></span>
-              Uranus
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
-          <li>
-            <Link className="planet-link link" onClick={() => dispatch(changeCurrentPage('Neptune'))} to="/neptune">
-              <span className="planet-link-icon" id="neptune-icon"></span>
-              Neptune
-              <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-            </Link>
-          </li>
+          {listItems}
         </ul>
       </nav>
     </header>
