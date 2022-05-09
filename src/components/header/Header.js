@@ -17,7 +17,8 @@ export const Header = (props) => {
 
   const listItems = planetNames.map((name, index) => {
     return (
-      <li>
+      <li key="index">
+
         <Link 
           className="planet-link link" 
           onClick={() => {
@@ -25,10 +26,15 @@ export const Header = (props) => {
             changePageColor(index);
           }} 
           to={`/${planetNames[index]}`}>
+
           <span className="planet-link-icon" id={`${planetNames[index]}-icon`}></span>
-            {planetNames[index]}
-            <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
+
+          {planetNames[index]}
+
+          <img className="chevron" src={chevron} aria-hidden="true" alt=""/>
+
         </Link>
+
       </li>
     )
   })
