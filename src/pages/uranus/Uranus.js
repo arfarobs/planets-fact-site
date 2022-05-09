@@ -6,9 +6,13 @@ import { Stats } from '../../components/stats/Stats';
 export const Uranus = () => {
   return (
     <article>
-      <Img />
-      <Info />
-      <InfoNav />
+      <div className="desktop-container"> 
+        <Img />
+        <div className='tablet-container'>
+          <Info />
+          <InfoNav />
+        </div>
+      </div>
       <Stats />
     </article>
   )

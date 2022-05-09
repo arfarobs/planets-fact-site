@@ -25,7 +25,9 @@ export const InfoNav = () => {
             changeActive(e);
           }} >
           <span className="info-nav-number">0{index + 1}</span>
+          {index === 1 && <span className="tablet-title">internal&nbsp;</span>}
           <h3>{title}</h3>
+          {index === 2 && <span className="tablet-title">&nbsp;geology</span>}
         </button>
       </li>
     )});

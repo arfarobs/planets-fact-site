@@ -8,3 +8,11 @@
 .planet-img-secondary {
   display: none;
 }
+
+@media only screen and (min-width:768px) {
+  .planet-img {
+    margin-bottom: 130px;
+    width: 184px;
+    height: 184px;
+  }
+}
