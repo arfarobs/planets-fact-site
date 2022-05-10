@@ -2,7 +2,9 @@
 
 .stats {
   color: #FFF;
-  margin: 0 24px 39px;
+  margin: 0 auto 39px;
+  max-width: 500px;
+  padding: 0 24px;
 }
 
 .stats-item {
@@ -40,6 +42,9 @@
     margin: 0 39.5px 36px;
     display: flex;
     justify-content: space-between;
+    padding: 0;
+    width: 689px;
+    max-width: unset;
   }
 
   .stats-item {

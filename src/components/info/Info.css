@@ -17,7 +17,8 @@ h2 {
   font-size: 11px;
   line-height: 22px;
   opacity: 0.75;
-  margin: 16px 0 32px;
+  margin: 16px auto 32px;
+  max-width: 500px;
 }
 
 .source {
@@ -35,6 +36,12 @@ h2 {
 }
 
 @media only screen and (min-width: 768px) {
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .tablet-container {
     display: flex;
     margin: 0 auto 27px;
@@ -46,7 +53,7 @@ h2 {
   .info-container {
     margin: 0;
     text-align: left;
-    width: 339px;
+    max-width: 339px;
   }
   
   h2 {
