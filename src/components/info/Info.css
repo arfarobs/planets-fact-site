@@ -46,14 +46,14 @@ h2 {
     display: flex;
     margin: 0 auto 27px;
     justify-content: space-between;
-    padding: 0 39.5px;
     align-items: center;
+    min-width: 689px;
   }
 
   .info-container {
     margin: 0;
     text-align: left;
-    max-width: 339px;
+    width: 339px;
   }
   
   h2 {
