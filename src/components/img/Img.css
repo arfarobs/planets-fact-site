@@ -16,3 +16,19 @@
     height: 184px;
   }
 }
+
+@media only screen and (min-width: 1440px) {
+  .desktop-container {
+    display: flex;
+    margin-top: 126px;
+    align-items: center;
+    width: 1110px;
+    justify-content: flex-end;
+  }
+
+  .planet-img {
+    margin: 0;
+    height: 290px;
+    width: 290px;
+  }
+}

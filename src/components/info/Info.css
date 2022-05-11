@@ -65,3 +65,32 @@ h2 {
     margin-top: 24px;
   }
 }
+
+@media only screen and (min-width: 1440px) {
+  .tablet-container {
+    flex-direction: column;
+    min-width: unset;
+    margin: 0 0 0 300px;
+  }
+
+  .info-container {
+    width: 350px;
+    margin-bottom: 39px;
+  }
+
+  h2 {
+    font-size: 80px;
+    line-height: 104px;
+  }
+
+  .info-p {
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 24px;
+  }
+
+  .source {
+    font-weight: 14px;
+    line-height: 25px;
+  }
+}

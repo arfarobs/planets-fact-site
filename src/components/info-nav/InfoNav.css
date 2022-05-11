@@ -88,3 +88,24 @@
     border: none;
   }
 }
+
+@media only screen and (min-width: 1440px) {
+  .info-nav {
+    width: 350px;
+    height: 176px;
+  }
+  
+  .info-nav-button {
+    padding: 11.5px 0;
+    font-size: 12px;
+    line-height: 25px;
+    letter-spacing: 2.57143px;
+  }
+
+  .info-nav-number {
+    margin: 0 25px 0 28px;
+    font-size: 12px;
+    line-height: 25px;
+    letter-spacing: 2.57143px;
+  }
+}
