@@ -4,6 +4,7 @@ import chevron from '../../assets/images/icon-chevron.svg';
 import hamburger from'../../assets/images/icon-hamburger.svg';
 import { changeCurrentPage } from "../info/infoSlice";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 
 export const Header = (props) => {
   const dispatch = useDispatch();
@@ -40,7 +41,12 @@ export const Header = (props) => {
   })
 
   return (
-    <header className="header">
+    <motion.header 
+      className="header"
+      animate={{ y: 0 }}
+      initial={{ y: -200 }}
+      transition={{ duration: 0.5 }}
+    >
       <Link className="link" to="/">
         <h1>The Planets</h1>
       </Link>
@@ -52,6 +58,6 @@ export const Header = (props) => {
           {listItems}
         </ul>
       </nav>
-    </header>
+    </motion.header>
   );
 }

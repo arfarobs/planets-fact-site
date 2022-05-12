@@ -93,6 +93,7 @@
     font-size: 12px;
     line-height: 25px;
     letter-spacing: 2.57143px;
+    transition: background 0.3s ease-in-out;
   }
 
   .info-nav-number {
@@ -100,5 +101,12 @@
     font-size: 12px;
     line-height: 25px;
     letter-spacing: 2.57143px;
+    opacity: 0.5;
+  }
+
+  .non-selected-nav-button:hover, .non-selected-nav-button:focus-visible {
+    cursor: pointer;
+    background: rgba(216, 216, 216, 0.2);
+    border: none;
   }
 }

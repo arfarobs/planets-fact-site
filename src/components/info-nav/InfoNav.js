@@ -2,6 +2,7 @@ import './InfoNav.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeParagraph } from '../info/infoSlice';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export const InfoNav = () => {
   const currentSection = useSelector((state) => state.info.currentSection);
@@ -10,9 +11,11 @@ export const InfoNav = () => {
   useEffect(() => {
     const infoNavButtons = document.getElementsByClassName('info-nav-button');
     for (let i = 0; i < infoNavButtons.length; i++) {
-      infoNavButtons[i].classList.remove('selected-info-nav-button');
+      infoNavButtons[i].classList.remove('selected-info-nav-button', 'non-selected-nav-button');
       if (infoNavButtons[i].getAttribute('data-title') === currentSection) {
         infoNavButtons[i].classList.add('selected-info-nav-button');
+      } else {
+        infoNavButtons[i].classList.add('non-selected-nav-button');
       }
     }
   }, [currentSection]);
@@ -20,7 +23,7 @@ export const InfoNav = () => {
   const navTitles = ['overview', 'structure', 'surface'];
   const navListItems = navTitles.map((title, index) => {
     return (
-      <li key={index}>
+      <motion.li key={index}>
         <button 
           data-title={title}
           className={index === 0 ? 'selected-info-nav-button info-nav-button' : 'info-nav-button'}
@@ -30,7 +33,7 @@ export const InfoNav = () => {
           <h3>{title}</h3>
           {index === 2 && <span className="tablet-title">&nbsp;geology</span>}
         </button>
-      </li>
+      </motion.li>
     )});
 
   return (
