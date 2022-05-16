@@ -2,15 +2,21 @@ import { Img } from '../../components/img/Img';
 import { Info } from '../../components/info/Info';
 import { InfoNav } from '../../components/info-nav/InfoNav';
 import { Stats } from '../../components/stats/Stats';
-import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { changeCurrentPage } from '../../components/info/infoSlice';
+import { changePageColor } from '../../modules/functions';
+import { useEffect } from 'react';
 
 export const Mercury = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeCurrentPage('mercury'));
+    changePageColor(0);
+  })
+
   return (
-    <motion.article
-      animate={{ x: 0, opacity: 1 }}
-      initial={{ x: '100vw', opacity: 0 }}
-      transition= {{ delay: 0.5, duration: 0.7, type: 'spring', stiffness: 1000 }}
-    >
+    <article>
       <div className="desktop-container"> 
         <Img />
         <div className='tablet-container'>
@@ -19,6 +25,6 @@ export const Mercury = () => {
         </div>
       </div>
       <Stats />
-    </motion.article>
+    </article>
   )
 }

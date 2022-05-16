@@ -8,11 +8,13 @@ import { Jupiter } from '../pages/jupiter/Jupiter';
 import { Saturn } from '../pages/saturn/Saturn';
 import { Uranus } from '../pages/uranus/Uranus';
 import { Neptune } from '../pages/neptune/Neptune';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { React, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     const menu = document.getElementById('planet-nav');
@@ -37,16 +39,18 @@ function App() {
     <>
       <Header onClick={toggleMenu} />
       <main>
-        <Routes>
-          <Route path="/" element={<Mercury />} />
-          <Route path="/venus" element={<Venus />} />
-          <Route path="/earth" element={<Earth />} />
-          <Route path="/mars" element={<Mars />} />
-          <Route path="/jupiter" element={<Jupiter />} />
-          <Route path="/saturn" element={<Saturn />} />
-          <Route path="/uranus" element={<Uranus />} />
-          <Route path="/neptune" element={<Neptune />} />
-        </Routes>
+        <AnimatePresence exitBeforeEnter>
+          <Routes location={location} key={location.key}>
+            <Route path="/" element={<Mercury />} />
+            <Route path="/venus" element={<Venus />} />
+            <Route path="/earth" element={<Earth />} />
+            <Route path="/mars" element={<Mars />} />
+            <Route path="/jupiter" element={<Jupiter />} />
+            <Route path="/saturn" element={<Saturn />} />
+            <Route path="/uranus" element={<Uranus />} />
+            <Route path="/neptune" element={<Neptune />} />
+          </Routes>
+        </AnimatePresence>
       </main>
     </>
   )

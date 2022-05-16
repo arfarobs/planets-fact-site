@@ -9,6 +9,7 @@ export const InfoNav = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    
     const infoNavButtons = document.getElementsByClassName('info-nav-button');
     for (let i = 0; i < infoNavButtons.length; i++) {
       infoNavButtons[i].classList.remove('selected-info-nav-button', 'non-selected-nav-button');
