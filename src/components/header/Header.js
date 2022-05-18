@@ -3,10 +3,19 @@ import './Header.css';
 import chevron from '../../assets/images/icon-chevron.svg';
 import hamburger from'../../assets/images/icon-hamburger.svg';
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenuIsOpen } from './headerSlice';
 
-export const Header = (props) => {
+export const Header = () => {
+  const menuIsOpen = useSelector((state) => state.header.menuIsOpen);
+  const dispatch = useDispatch();
+
+  
+
+
+
   const headerVariants = {
-    animate: {
+    visible: {
       y: 0,
       opacity: 1,
       transition: {
@@ -16,14 +25,14 @@ export const Header = (props) => {
         staggerChildren: 0.1
       }
     },
-    initial: {
+    hidden: {
       y: -100,
       opacity: 0
     },
   }
 
   const h1Variants = {
-    animate: {
+    visible: {
       textShadow: '0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF',
       transition: {
         duration: 0.5,
@@ -31,13 +40,13 @@ export const Header = (props) => {
         yoyo: 2
       }
     },
-    initial: {
+    hidden: {
       textShadow: '0px 0px 3px #FFF, 0px 0px 6px #FFF, 0px 0px 9px #FFF, 0px 0px 15px #FFF'
     }
   }
 
   const liVariants = {
-    animate: {
+    visible: {
       x: 0,
       transition: {
         duration: 0.5,
@@ -46,37 +55,49 @@ export const Header = (props) => {
         stiffness: '70'
       }
     },
-    initial: {
+    hidden: {
       x: '100vw'
     }
-  }
+  };
 
   const buttonVariants = {
-    animate: {
-      opacity: 0.25,
+    visible: {
+      opacity: 1,
       transition: {
         ease: 'easeOut',
         duration: 0.5,
         delay: 0.4
       }
     },
-    initial: {
+    hidden: {
       opacity: 0
     }
   }
 
-  const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
+  const menuVariants = {
+    visible: {
+      display: 'block'
+    },
+    hidden: {
+    },
+  }
+
+
+
+
+
+  const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
 
   const listItems = planetNames.map((name, index) => {
     return (
-      <motion.li key={index} variants={liVariants}>
+      <motion.li key={index} variants={liVariants} animate='visible' initial='hidden'>
 
         <Link 
           className="planet-link link" 
           
           to={index === 0 ? '/' : `/${name}`}>
 
-          <span className="planet-link-icon" id={`${name}-icon`}></span>
+          <motion.span className="planet-link-icon" id={`${name}-icon`}></motion.span>
 
           {name}
 
@@ -92,20 +113,20 @@ export const Header = (props) => {
     <motion.header 
       className="header"
       variants={headerVariants}
-      animate='animate'
-      initial='initial'
+      animate='visible'
+      initial='hidden'
     >
       <Link className="link" to="/">
         <motion.h1 variants={h1Variants}>The Planets</motion.h1>
       </Link>
-      <motion.button variants={buttonVariants} id="planet-menu-btn" onClick={props.onClick}>
+      <motion.button variants={buttonVariants} id="planet-menu-btn" onClick={() => dispatch(toggleMenuIsOpen())}>
         <img src={hamburger} alt="Menu" />
       </motion.button>
-      <nav id="planet-nav">
+      <motion.nav variants={menuVariants} initial='hidden' animate={menuIsOpen ? 'visible' : 'hidden'} id="planet-nav">
         <ul>
           {listItems}
         </ul>
-      </nav>
+      </motion.nav>
     </motion.header>
   );
 }

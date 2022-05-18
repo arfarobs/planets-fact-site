@@ -9,36 +9,27 @@ import { Saturn } from '../pages/saturn/Saturn';
 import { Uranus } from '../pages/uranus/Uranus';
 import { Neptune } from '../pages/neptune/Neptune';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { React, useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { React } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useSelector} from 'react-redux';
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const menuIsOpen = useSelector((state) => state.header.menuIsOpen);
 
-  const toggleMenu = () => {
-    const menu = document.getElementById('planet-nav');
-    const main = document.querySelector('main');
-    if (menuOpen) {
-      menu.classList.remove('fade-in');
-      menu.classList.add('fade-out');
-      main.classList.remove('fade-out');
-      main.classList.add('fade-in');
-      setTimeout(() => {
-        menu.classList.remove('fade-out');
-      }, 2000);
-    } else {
-      menu.classList.remove('fade-out');
-      menu.classList.add('fade-in');
-      main.classList.add('fade-out');
+  const mainVariants = {
+    menuOpen: {
+      display: 'none'
+    },
+    menuClosed: {
+      display: 'block'
     }
-    menuOpen ? setMenuOpen(false) : setMenuOpen(true);
-  };
+  }
 
   return (
     <>
-      <Header onClick={toggleMenu} />
-      <main>
+      <Header />
+      <motion.main variants={mainVariants} animate={menuIsOpen ? 'menuOpen' : 'menuClosed'}>
         <AnimatePresence exitBeforeEnter>
           <Routes location={location} key={location.key}>
             <Route path="/" element={<Mercury />} />
@@ -51,7 +42,7 @@ function App() {
             <Route path="/neptune" element={<Neptune />} />
           </Routes>
         </AnimatePresence>
-      </main>
+      </motion.main>
     </>
   )
 }
