@@ -11,12 +11,6 @@ export const headerSlice = createSlice({
     toggleMenuIsOpen (state) {
       state.menuIsOpen = !state.menuIsOpen;
     },
-    setWidth (state, action) {
-      state.width = action.payload;
-    },
-    toggleHasHadInitialRender (state) {
-      state.hasHadInitialRender = !state.hasHadInitialRender;
-    }
   }
 })
 

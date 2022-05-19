@@ -5,10 +5,16 @@ import hamburger from'../../assets/images/icon-hamburger.svg';
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenuIsOpen } from './headerSlice';
+import { useEffect } from "react";
 
 export const Header = () => {
   const menuIsOpen = useSelector((state) => state.header.menuIsOpen);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.getElementById('planet-nav').style.display = menuIsOpen ? 'block' : 'none';
+
+  }, [menuIsOpen])
 
   const headerVariants = {
     visible: {
@@ -77,7 +83,7 @@ export const Header = () => {
 
         <Link 
           className="planet-link link" 
-          
+          onClick={() => dispatch(toggleMenuIsOpen())}
           to={index === 0 ? '/' : `/${name}`}>
 
           <motion.span className="planet-link-icon" id={`${name}-icon`}></motion.span>
@@ -107,7 +113,6 @@ export const Header = () => {
         id="planet-menu-btn" 
         onClick={() => {
           dispatch(toggleMenuIsOpen());
-          document.getElementById('planet-nav').style.display = menuIsOpen ? 'none' : 'block';
           }
         }
       >
