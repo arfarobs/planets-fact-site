@@ -19,6 +19,7 @@ h1 {
   width: 24px;
   height: 17px;
   opacity: 1;
+  display: block;
 }
 
 #planet-nav {
