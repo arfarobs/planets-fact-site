@@ -42,7 +42,7 @@ export const Header = () => {
 
   const liVariants = {
     visible: {
-      x: 0,
+      opacity: 1,
       transition: {
         duration: 0.5,
         ease: 'easeOut',
@@ -51,7 +51,7 @@ export const Header = () => {
       }
     },
     hidden: {
-      x: '100vw'
+      opacity: 0
     }
   };
 
