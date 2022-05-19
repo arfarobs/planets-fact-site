@@ -10,10 +10,6 @@ export const Header = () => {
   const menuIsOpen = useSelector((state) => state.header.menuIsOpen);
   const dispatch = useDispatch();
 
-  
-
-
-
   const headerVariants = {
     visible: {
       y: 0,
@@ -37,7 +33,6 @@ export const Header = () => {
       transition: {
         duration: 0.5,
         ease: 'easeOut',
-        yoyo: 2
       }
     },
     hidden: {
@@ -74,23 +69,11 @@ export const Header = () => {
     }
   }
 
-  const menuVariants = {
-    visible: {
-      display: 'block'
-    },
-    hidden: {
-    },
-  }
-
-
-
-
-
   const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
 
   const listItems = planetNames.map((name, index) => {
     return (
-      <motion.li key={index} variants={liVariants} animate='visible' initial='hidden'>
+      <motion.li key={index} variants={liVariants}>
 
         <Link 
           className="planet-link link" 
@@ -119,14 +102,22 @@ export const Header = () => {
       <Link className="link" to="/">
         <motion.h1 variants={h1Variants}>The Planets</motion.h1>
       </Link>
-      <motion.button variants={buttonVariants} id="planet-menu-btn" onClick={() => dispatch(toggleMenuIsOpen())}>
+      <motion.button 
+        variants={buttonVariants} 
+        id="planet-menu-btn" 
+        onClick={() => {
+          dispatch(toggleMenuIsOpen());
+          document.getElementById('planet-nav').style.display = menuIsOpen ? 'none' : 'block';
+          }
+        }
+      >
         <img src={hamburger} alt="Menu" />
       </motion.button>
-      <motion.nav variants={menuVariants} initial='hidden' animate={menuIsOpen ? 'visible' : 'hidden'} id="planet-nav">
+      <nav id="planet-nav">
         <ul>
           {listItems}
         </ul>
-      </motion.nav>
+      </nav>
     </motion.header>
   );
 }
