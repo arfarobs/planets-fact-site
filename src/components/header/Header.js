@@ -10,6 +10,9 @@ export const Header = () => {
   const menuIsOpen = useSelector((state) => state.header.menuIsOpen);
   const dispatch = useDispatch();
 
+  
+
+
 
   const headerVariants = {
     visible: {
@@ -17,8 +20,9 @@ export const Header = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        staggerChildren: 0.1,
-        when: 'beforeChildren'
+        ease: 'easeOut',
+        when: 'beforeChildren',
+        staggerChildren: 0.1
       }
     },
     hidden: {
@@ -26,7 +30,6 @@ export const Header = () => {
       opacity: 0
     },
   }
-
 
   const h1Variants = {
     visible: {
@@ -42,6 +45,21 @@ export const Header = () => {
     }
   }
 
+  const liVariants = {
+    visible: {
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+        type: 'spring',
+        stiffness: '70'
+      }
+    },
+    hidden: {
+      x: '100vw'
+    }
+  };
+
   const buttonVariants = {
     visible: {
       opacity: 1,
@@ -56,27 +74,12 @@ export const Header = () => {
     }
   }
 
-  const navVariants = {
+  const menuVariants = {
     visible: {
-      display: 'block',
+      display: 'block'
     },
     hidden: {
     },
-  }
-
-  const liVariants = {
-    visible: {
-      x: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-        type: 'spring',
-        stiffness: '70'
-      }
-    },
-    hidden: {
-      x: '100vw'
-    }
   }
 
 
@@ -87,7 +90,7 @@ export const Header = () => {
 
   const listItems = planetNames.map((name, index) => {
     return (
-      <motion.li key={index} variants={liVariants}>
+      <motion.li key={index} variants={liVariants} animate='visible' initial='hidden'>
 
         <Link 
           className="planet-link link" 
@@ -119,16 +122,11 @@ export const Header = () => {
       <motion.button variants={buttonVariants} id="planet-menu-btn" onClick={() => dispatch(toggleMenuIsOpen())}>
         <img src={hamburger} alt="Menu" />
       </motion.button>
-      {document.getElementById('planet-menu-btn') && <motion.nav variants={navVariants} initial='hidden' animate={menuIsOpen ? 'visible' : 'hidden'} id="planet-nav">
+      <motion.nav variants={menuVariants} initial='hidden' animate={menuIsOpen ? 'visible' : 'hidden'} id="planet-nav">
         <ul>
           {listItems}
         </ul>
-      </motion.nav>}
-      {!document.getElementById('planet-menu-btn') && <nav id="planet-nav">
-        <ul>
-          {listItems}
-        </ul>
-      </nav>}
+      </motion.nav>
     </motion.header>
   );
 }
