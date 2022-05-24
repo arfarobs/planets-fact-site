@@ -1,6 +1,6 @@
 import './InfoNav.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeParagraph } from '../info/infoSlice';
+import { changeParagraph, toggleParagraphIsChanging } from '../info/infoSlice';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -28,7 +28,11 @@ export const InfoNav = () => {
         <button 
           data-title={title}
           className={index === 0 ? 'selected-info-nav-button info-nav-button' : 'info-nav-button'}
-          onClick={() => dispatch(changeParagraph(title))} >
+          onClick={() => {
+            dispatch(toggleParagraphIsChanging());
+            setTimeout(() => dispatch(changeParagraph(title)), "500");
+          }} 
+        >
           <span className="info-nav-number">0{index + 1}</span>
           {index === 1 && <span className="tablet-title">internal&nbsp;</span>}
           <h3>{title}</h3>
