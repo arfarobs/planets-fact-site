@@ -12,8 +12,6 @@ export const Info = () => {
   const controls = useAnimation();
   const dispatch = useDispatch();
   
-  controls.start('visible');
-  /* Use controls. Maybe have a boolean state that toggles. If state is true run controls for paragraph.*/
 
   const paragraphAnimations = async () => {
     await controls.start('exitParagraph');
@@ -24,6 +22,8 @@ export const Info = () => {
   useEffect(() => {
     if (paragraphIsChanging) {
       paragraphAnimations()
+    } else {
+      controls.start('visible');
     }
   })
 
