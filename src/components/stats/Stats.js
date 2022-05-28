@@ -10,7 +10,8 @@ export const Stats = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.5
+        duration: 0.5,
+        delay: 1
       },
     },
     hidden: {

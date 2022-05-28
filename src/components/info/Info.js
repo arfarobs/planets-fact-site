@@ -31,7 +31,7 @@ export const Info = () => {
     visible: (i) => ({
       opacity: i === 3 ? 0.5 : 1,
       transition: {
-        delay: i * 0.3,
+        delay: i * 0.2,
       },
     }),
     hidden: { opacity: 0 },
@@ -44,7 +44,7 @@ export const Info = () => {
     visible: (i) => ({
       opacity: i === 3 ? 0.5 : 1,
       transition: {
-        delay: i * 0.3,
+        delay: i * 0.2,
       },
     }),
     hidden: { opacity: 0 },
