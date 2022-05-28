@@ -1,11 +1,12 @@
 import './InfoNav.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeParagraph, toggleParagraphIsChanging } from '../info/infoSlice';
+import { changeParagraph, toggleParagraphIsChanging, setSurfaceStatus, toggleSurfaceHasBeenSelected } from '../info/infoSlice';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export const InfoNav = () => {
   const currentSection = useSelector((state) => state.info.currentSection);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,8 +30,10 @@ export const InfoNav = () => {
           data-title={title}
           className={index === 0 ? 'selected-info-nav-button info-nav-button' : 'info-nav-button'}
           onClick={() => {
-            dispatch(toggleParagraphIsChanging());
-            setTimeout(() => dispatch(changeParagraph(title)), "500");
+            dispatch(toggleParagraphIsChanging(true));
+            setTimeout(() => dispatch(changeParagraph(title)),  "500");
+            dispatch(setSurfaceStatus(index === 2 ? 'entering' : ''));
+            dispatch(toggleSurfaceHasBeenSelected(index === 2 ? true : false));
           }} 
         >
           <span className="info-nav-number">0{index + 1}</span>

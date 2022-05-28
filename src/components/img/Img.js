@@ -1,25 +1,40 @@
 import './Img.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect } from 'react';
-import { toggleParagraphIsChanging } from '../info/infoSlice';
+import { toggleParagraphIsChanging, setSurfaceStatus } from '../info/infoSlice';
 
 
 export const Img = () => {
   const currentSection = useSelector((state) => state.info.currentSection);
   const currentPage = useSelector((state) => state.info.currentPage);
   const paragraphIsChanging = useSelector((state) => state.info.paragraphIsChanging);
+  const surfaceStatus = useSelector((state) => state.info.surfaceStatus);
 
   const controls = useAnimation();
+  const dispatch = useDispatch();
 
   const primaryImgSrc = currentSection === 'structure' ? `planets/planet-${currentPage}-internal.svg`.toLowerCase() : `planets/planet-${currentPage}.svg`.toLowerCase();
   const secondaryImgSrc = `planets/geology-${currentPage}.png`.toLowerCase();
 
 
   const animateImgChange = async () => {
-    await controls.start('exit');
-    await controls.start('enter');
-    toggleParagraphIsChanging();
+    if (surfaceStatus === 'entering') {
+      await controls.start('exit');
+      await controls.start('enter');
+      await controls.start('enterSecondary');
+      dispatch(setSurfaceStatus());
+    } else if (surfaceStatus === 'exiting') {
+      controls.start('exitSecondary');
+      await controls.start('exit');
+      await controls.start('enter');
+      dispatch(setSurfaceStatus());
+    } else {
+      await controls.start('exit');
+      await controls.start('enter');
+    }
+
+    dispatch(toggleParagraphIsChanging(false));
   }
 
   useEffect(() => {
@@ -61,24 +76,24 @@ export const Img = () => {
   }
 
   const secondaryImgVariants = {
-    visible: {
-      y: 0,
-      transition: {
-        duration: 1
-      }
-    },
     hidden: {
       y: '+100vh'
     },
-    exit: {
+    exitSecondary: {
       y: '+100vh',
       transition: {
-        duration: 1
+        duration: 0.5
+      }
+    },
+    enterSecondary: {
+      y: 0,
+      transition: {
+        duration: 0.5
       }
     }
   }
 
-  const secondaryImg = (currentSection === 'surface') ? <motion.img className="planet-img-secondary" src={secondaryImgSrc} alt={`${currentPage} geology`} variants={secondaryImgVariants} animate='visible' initial='hidden' exit='exit' /> : null;
+  const secondaryImg = (currentSection === 'surface') ? <motion.img className="planet-img-secondary" src={secondaryImgSrc} alt={`${currentPage} geology`} variants={secondaryImgVariants} animate={controls} initial='hidden' exit='exit' /> : null;
 
 
   return (
