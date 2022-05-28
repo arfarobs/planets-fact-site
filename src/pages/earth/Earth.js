@@ -8,23 +8,23 @@ import { changePageColor } from '../../modules/functions';
 import { useEffect } from 'react';
 
 export const Earth = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeCurrentPage('earth'));
-    changePageColor(2);
-  })
+	useEffect(() => {
+		dispatch(changeCurrentPage('earth'));
+		changePageColor(2);
+	});
 
-  return (
-    <article>
-      <div className="desktop-container"> 
-        <Img />
-        <div className='tablet-container'>
-          <Info />
-          <InfoNav />
-        </div>
-      </div>
-      <Stats />
-    </article>
-  )
-}
+	return (
+		<article>
+			<div className="desktop-container"> 
+				<Img />
+				<div className='tablet-container'>
+					<Info />
+					<InfoNav />
+				</div>
+			</div>
+			<Stats />
+		</article>
+	);
+};

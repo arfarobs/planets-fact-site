@@ -9,23 +9,23 @@ import { useEffect } from 'react';
 
 
 export const Neptune = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeCurrentPage('neptune'));
-    changePageColor(7);
-  })
+	useEffect(() => {
+		dispatch(changeCurrentPage('neptune'));
+		changePageColor(7);
+	});
 
-  return (
-    <article>
-      <div className="desktop-container"> 
-        <Img />
-        <div className='tablet-container'>
-          <Info />
-          <InfoNav />
-        </div>
-      </div>
-      <Stats />
-    </article>
-  )
-}
+	return (
+		<article>
+			<div className="desktop-container"> 
+				<Img />
+				<div className='tablet-container'>
+					<Info />
+					<InfoNav />
+				</div>
+			</div>
+			<Stats />
+		</article>
+	);
+};

@@ -9,23 +9,23 @@ import { useEffect } from 'react';
 
 
 export const Mars = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeCurrentPage('mars'));
-    changePageColor(3);
-  })
+	useEffect(() => {
+		dispatch(changeCurrentPage('mars'));
+		changePageColor(3);
+	});
 
-  return (
-    <article>
-      <div className="desktop-container"> 
-        <Img />
-        <div className='tablet-container'>
-          <Info />
-          <InfoNav />
-        </div>
-      </div>
-      <Stats />
-    </article>
-  )
-}
+	return (
+		<article>
+			<div className="desktop-container"> 
+				<Img />
+				<div className='tablet-container'>
+					<Info />
+					<InfoNav />
+				</div>
+			</div>
+			<Stats />
+		</article>
+	);
+};

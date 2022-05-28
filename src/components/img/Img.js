@@ -6,108 +6,108 @@ import { toggleParagraphIsChanging, setSurfaceStatus } from '../info/infoSlice';
 
 
 export const Img = () => {
-  const currentSection = useSelector((state) => state.info.currentSection);
-  const currentPage = useSelector((state) => state.info.currentPage);
-  const paragraphIsChanging = useSelector((state) => state.info.paragraphIsChanging);
-  const surfaceStatus = useSelector((state) => state.info.surfaceStatus);
+	const currentSection = useSelector((state) => state.info.currentSection);
+	const currentPage = useSelector((state) => state.info.currentPage);
+	const paragraphIsChanging = useSelector((state) => state.info.paragraphIsChanging);
+	const surfaceStatus = useSelector((state) => state.info.surfaceStatus);
 
-  const controls = useAnimation();
-  const dispatch = useDispatch();
+	const controls = useAnimation();
+	const dispatch = useDispatch();
 
-  const primaryImgSrc = currentSection === 'structure' ? `planets/planet-${currentPage}-internal.svg`.toLowerCase() : `planets/planet-${currentPage}.svg`.toLowerCase();
-  const secondaryImgSrc = `planets/geology-${currentPage}.png`.toLowerCase();
-
-
-  const animateImgChange = async () => {
-    if (surfaceStatus === 'entering') {
-      await controls.start('exit');
-      await controls.start('enter');
-      await controls.start('enterSecondary');
-      dispatch(setSurfaceStatus());
-    } else if (surfaceStatus === 'exiting') {
-      controls.start('exitSecondary');
-      await controls.start('exit');
-      await controls.start('enter');
-      dispatch(setSurfaceStatus());
-    } else {
-      await controls.start('exit');
-      await controls.start('enter');
-    }
-
-    dispatch(toggleParagraphIsChanging(false));
-  }
-
-  useEffect(() => {
-    if (paragraphIsChanging) {
-      animateImgChange();
-    } else {
-      controls.start('visible');
-    }
-  })
-
-  const primaryImgVariants = {
-    visible: {
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        delay: 1,
-        ease: 'easeOut'
-      }
-    },
-    hidden: {
-      scale: 0,
-    },
-    exit: {
-      scale: 0,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeIn'
-      }
-    },
-    enter: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut'
-      }
-    }
-  }
-
-  const secondaryImgVariants = {
-    hidden: {
-      y: '+100vh'
-    },
-    exitSecondary: {
-      y: '+100vh',
-      transition: {
-        duration: 0.5
-      }
-    },
-    enterSecondary: {
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  }
-
-  const secondaryImg = (currentSection === 'surface') ? <motion.img className="planet-img-secondary" src={secondaryImgSrc} alt={`${currentPage} geology`} variants={secondaryImgVariants} animate={controls} initial='hidden' exit='exit' /> : null;
+	const primaryImgSrc = currentSection === 'structure' ? `planets/planet-${currentPage}-internal.svg`.toLowerCase() : `planets/planet-${currentPage}.svg`.toLowerCase();
+	const secondaryImgSrc = `planets/geology-${currentPage}.png`.toLowerCase();
 
 
-  return (
-    <>
-      <motion.img 
-        className="planet-img" 
-        src={primaryImgSrc} 
-        alt={currentPage} 
-        variants={primaryImgVariants}
-        exit='exit'
-        initial='hidden'
-        animate={controls}
-      />
-      {secondaryImg}
-    </>
-  )
-}
+	const animateImgChange = async () => {
+		if (surfaceStatus === 'entering') {
+			await controls.start('exit');
+			await controls.start('enter');
+			await controls.start('enterSecondary');
+			dispatch(setSurfaceStatus());
+		} else if (surfaceStatus === 'exiting') {
+			controls.start('exitSecondary');
+			await controls.start('exit');
+			await controls.start('enter');
+			dispatch(setSurfaceStatus());
+		} else {
+			await controls.start('exit');
+			await controls.start('enter');
+		}
+
+		dispatch(toggleParagraphIsChanging(false));
+	};
+
+	useEffect(() => {
+		if (paragraphIsChanging) {
+			animateImgChange();
+		} else {
+			controls.start('visible');
+		}
+	});
+
+	const primaryImgVariants = {
+		visible: {
+			scale: 1,
+			transition: {
+				duration: 0.5,
+				delay: 1,
+				ease: 'easeOut'
+			}
+		},
+		hidden: {
+			scale: 0,
+		},
+		exit: {
+			scale: 0,
+			opacity: 0,
+			transition: {
+				duration: 0.5,
+				ease: 'easeIn'
+			}
+		},
+		enter: {
+			scale: 1,
+			opacity: 1,
+			transition: {
+				duration: 0.5,
+				ease: 'easeOut'
+			}
+		}
+	};
+
+	const secondaryImgVariants = {
+		hidden: {
+			y: '+100vh'
+		},
+		exitSecondary: {
+			y: '+100vh',
+			transition: {
+				duration: 0.5
+			}
+		},
+		enterSecondary: {
+			y: 0,
+			transition: {
+				duration: 0.5
+			}
+		}
+	};
+
+	const secondaryImg = (currentSection === 'surface') ? <motion.img className="planet-img-secondary" src={secondaryImgSrc} alt={`${currentPage} geology`} variants={secondaryImgVariants} animate={controls} initial='hidden' exit='exit' /> : null;
+
+
+	return (
+		<>
+			<motion.img 
+				className="planet-img" 
+				src={primaryImgSrc} 
+				alt={currentPage} 
+				variants={primaryImgVariants}
+				exit='exit'
+				initial='hidden'
+				animate={controls}
+			/>
+			{secondaryImg}
+		</>
+	);
+};

@@ -9,23 +9,23 @@ import { useEffect } from 'react';
 
 
 export const Jupiter = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeCurrentPage('jupiter'));
-    changePageColor(4);
-  })
+	useEffect(() => {
+		dispatch(changeCurrentPage('jupiter'));
+		changePageColor(4);
+	});
 
-  return (
-    <article>
-      <div className="desktop-container"> 
-        <Img />
-        <div className='tablet-container'>
-          <Info />
-          <InfoNav />
-        </div>
-      </div>
-      <Stats />
-    </article>
-  )
-}
+	return (
+		<article>
+			<div className="desktop-container"> 
+				<Img />
+				<div className='tablet-container'>
+					<Info />
+					<InfoNav />
+				</div>
+			</div>
+			<Stats />
+		</article>
+	);
+};
