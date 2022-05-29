@@ -4,8 +4,8 @@ const initialState = {
 	menuIsOpen: false
 };
 
-export const headerSlice = createSlice({
-	name: 'header',
+export const menuSlice = createSlice({
+	name: 'menu',
 	initialState,
 	reducers: {
 		toggleMenuIsOpen (state) {
@@ -14,6 +14,6 @@ export const headerSlice = createSlice({
 	}
 });
 
-export const { toggleMenuIsOpen, setWidth, toggleHasHadInitialRender } = headerSlice.actions;
+export const { toggleMenuIsOpen} = menuSlice.actions;
 
-export default headerSlice.reducer;
+export default menuSlice.reducer;

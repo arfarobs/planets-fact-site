@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import infoReducer from '../components/info/infoSlice';
-import headerSlice from '../components/header/headerSlice';
+import menuSlice from '../components/header/menuSlice';
 
 export const store = configureStore({
 	reducer: {
 		info: infoReducer,
-		header: headerSlice
+		menu: menuSlice
 	},
 });

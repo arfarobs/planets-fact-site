@@ -4,11 +4,11 @@ import chevron from '../../assets/images/icon-chevron.svg';
 import hamburger from'../../assets/images/icon-hamburger.svg';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMenuIsOpen } from './headerSlice';
+import { toggleMenuIsOpen } from './menuSlice';
 import { useEffect } from 'react';
 
 export const Header = () => {
-	const menuIsOpen = useSelector((state) => state.header.menuIsOpen);
+	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

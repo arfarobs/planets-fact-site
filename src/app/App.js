@@ -15,7 +15,7 @@ import { useSelector } from 'react-redux';
 
 function App() {
 	const location = useLocation();
-	const menuIsOpen = useSelector((state) => state.header.menuIsOpen);
+	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
 
 	const mainVariants = {
 		menuOpen: {
