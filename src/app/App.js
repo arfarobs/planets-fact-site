@@ -13,6 +13,8 @@ import { React } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 
+/*Refactored*/
+
 function App() {
 	const location = useLocation();
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import './Header.css';
 import chevron from '../../assets/images/icon-chevron.svg';
 import hamburger from'../../assets/images/icon-hamburger.svg';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenuIsOpen } from './menuSlice';
@@ -13,7 +13,6 @@ export const Header = () => {
 
 	useEffect(() => {
 		document.getElementById('planet-nav').style.display = menuIsOpen ? 'block' : 'none';
-
 	}, [menuIsOpen]);
 
 	const headerVariants = {
