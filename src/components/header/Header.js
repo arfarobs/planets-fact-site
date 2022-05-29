@@ -25,7 +25,6 @@ export const Header = () => {
 			document.querySelector('main').style.display = 'block';
 			document.getElementById('planet-nav').style.display = 'none';
 			setMenuShouldClose(false);
-			controls.start('mobileVisible');
 		}
 	};
 
@@ -80,12 +79,13 @@ export const Header = () => {
 		hidden: {
 			opacity: 0
 		},
-		mobileVisible: {
+		mobileVisible: i =>  ({
 			opacity: 1,
 			transition: {
-				duration: 2
+				duration: 0.3,
+				delay: i * 0.1
 			}
-		},
+		}),
 		mobileHidden: {
 			opacity: 0,
 			transition: {
@@ -95,7 +95,10 @@ export const Header = () => {
 		mobileExit: {
 			opacity: 0,
 			transition: {
-				duration: 2
+				duration: 0.5
+			},
+			transitionEnd: {
+				opacity: 1
 			}
 		}
 	};
@@ -118,7 +121,7 @@ export const Header = () => {
 
 	const listItems = planetNames.map((name, index) => {
 		return (
-			<motion.li key={index} variants={liVariants}>
+			<motion.li key={index} variants={liVariants} custom={index}>
 
 				<Link 
 					className="planet-link link" 
