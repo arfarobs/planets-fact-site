@@ -1,40 +1,19 @@
 import './Header.css';
-import chevron from '../../assets/images/icon-chevron.svg';
-import hamburger from'../../assets/images/icon-hamburger.svg';
+import { MenuBtn } from '../menu-btn/MenuBtn';
+import { PlanetNav } from '../planet-nav/PlanetNav';
 import { Link } from 'react-router-dom';
-import { motion, useAnimation } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleMenuIsOpen } from './menuSlice';
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const Header = () => {
-	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
-	const dispatch = useDispatch();
-	const controls = useAnimation();
-	const [menuShouldClose, setMenuShouldClose] = useState(false);
+	
 
-	const animateMenu = async () => {
-		if (menuIsOpen && !menuShouldClose) {
-			setMenuShouldClose(true);
-			await controls.start('mobileHidden');
-			document.querySelector('main').style.display = !menuIsOpen ? 'block' : 'none';
-			document.getElementById('planet-nav').style.display = menuIsOpen ? 'block' : 'none';
-			await controls.start('mobileVisible');
-		} else if (menuShouldClose) {
-			await controls.start('mobileExit');
-			document.querySelector('main').style.display = 'block';
-			document.getElementById('planet-nav').style.display = 'none';
-			setMenuShouldClose(false);
-		}
-	};
+	console.count('rendered');
 
-	useEffect(() => {
-		controls.start('visible');
-	}, []);
+	/*LOOK AT README!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
-	useEffect(() => {
-		animateMenu();
-	}, [menuIsOpen]);
+	/*Refactor animations. No longer need controls.*/
+
+
 
 	const headerVariants = {
 		visible: {
@@ -66,105 +45,25 @@ export const Header = () => {
 		}
 	};
 
-	const liVariants = {
-		visible: {
-			opacity: 1,
-			transition: {
-				duration: 0.5,
-				ease: 'easeOut',
-				type: 'spring',
-				stiffness: '70'
-			}
-		},
-		hidden: {
-			opacity: 0
-		},
-		mobileVisible: i =>  ({
-			opacity: 1,
-			transition: {
-				duration: 0.3,
-				delay: i * 0.1
-			}
-		}),
-		mobileHidden: {
-			opacity: 0,
-			transition: {
-				duration: 0
-			}
-		},
-		mobileExit: {
-			opacity: 0,
-			transition: {
-				duration: 0.5
-			},
-			transitionEnd: {
-				opacity: 1
-			}
-		}
-	};
+	
 
-	const buttonVariants = {
-		visible: {
-			opacity: 1,
-			transition: {
-				ease: 'easeOut',
-				duration: 0.5,
-				delay: 0.4
-			}
-		},
-		hidden: {
-			opacity: 0
-		}
-	};
+	
 
-	const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
 
-	const listItems = planetNames.map((name, index) => {
-		return (
-			<motion.li key={index} variants={liVariants} custom={index}>
-
-				<Link 
-					className="planet-link link" 
-					onClick={() => dispatch(toggleMenuIsOpen())}
-					to={index === 0 ? '/' : `/${name}`}>
-
-					<motion.span className="planet-link-icon" id={`${name}-icon`}></motion.span>
-
-					{name}
-
-					<img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-
-				</Link>
-
-			</motion.li>
-		);
-	});
+	
 
 	return (
 		<motion.header 
 			className="header"
 			variants={headerVariants}
-			animate={controls}
+			animate='visible'
 			initial='hidden'
 		>
 			<Link className="link" to="/">
 				<motion.h1 variants={h1Variants}>The Planets</motion.h1>
 			</Link>
-			<motion.button 
-				variants={buttonVariants} 
-				id="planet-menu-btn" 
-				onClick={() => {
-					dispatch(toggleMenuIsOpen());
-				}
-				}
-			>
-				<img src={hamburger} alt="Menu" />
-			</motion.button>
-			<nav id="planet-nav">
-				<ul>
-					{listItems}
-				</ul>
-			</nav>
+			<MenuBtn />
+			<PlanetNav />
 		</motion.header>
 	);
 };
