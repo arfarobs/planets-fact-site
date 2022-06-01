@@ -1,7 +1,7 @@
 import { motion, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMenuIsOpen, setMenuShouldClose, setMainShouldFadeIn, setMenuShouldFadeIn } from '../header/menuSlice';
+import { setMenuShouldClose, setMainShouldFadeIn, setMenuShouldFadeIn, setMenuIsOpen } from '../header/menuSlice';
 import chevron from '../../assets/images/icon-chevron.svg';
 import { useEffect } from 'react';
 
@@ -13,9 +13,6 @@ export const PlanetNav = () => {
 	const menuShouldFadeIn = useSelector((state) => state.menu.menuShouldFadeIn);
 
 	const handleMenuAnimations = async () => {
-		if (!menuIsOpen) {
-			setTimeout(() => controls.start('visible'), 500);
-		}
 		if (menuShouldFadeIn && menuIsOpen) {
 			await controls.start('mobileHidden');
 			await controls.start('openMobileNav');
@@ -32,6 +29,9 @@ export const PlanetNav = () => {
 
 
 	useEffect(() => {
+		if (!menuIsOpen) {
+			controls.start('visible');
+		}
 		handleMenuAnimations();
 	}, [menuShouldFadeIn, menuIsOpen]);
 
@@ -95,7 +95,7 @@ export const PlanetNav = () => {
 
 				<Link 
 					className="planet-link link" 
-					onClick={() => dispatch(toggleMenuIsOpen())}
+					onClick={() => dispatch(setMenuIsOpen(false))}
 					to={index === 0 ? '/' : `/${name}`}>
 
 					<motion.span className="planet-link-icon" id={`${name}-icon`}></motion.span>

@@ -14,6 +14,9 @@ export const menuSlice = createSlice({
 		toggleMenuIsOpen (state) {
 			state.menuIsOpen = !state.menuIsOpen;
 		},
+		setMenuIsOpen (state, action) {
+			state.menuIsOpen = action.payload;
+		},
 		setMenuShouldClose (state, action) {
 			state.menuShouldClose = action.payload;
 		},
@@ -26,6 +29,6 @@ export const menuSlice = createSlice({
 	}
 });
 
-export const { toggleMenuIsOpen, setMenuShouldClose, setMenuShouldFadeIn, setMainShouldFadeIn } = menuSlice.actions;
+export const { toggleMenuIsOpen, setMenuIsOpen, setMenuShouldClose, setMenuShouldFadeIn, setMainShouldFadeIn } = menuSlice.actions;
 
 export default menuSlice.reducer;
