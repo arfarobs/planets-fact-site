@@ -1,6 +1,6 @@
 import './Header.css';
-import { MenuBtn } from '../menu-btn/MenuBtn';
-import { PlanetNav } from '../planet-nav/PlanetNav';
+import { MenuBtn } from './menu-btn/MenuBtn';
+import { PlanetNav } from './planet-nav/PlanetNav';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -34,14 +34,16 @@ export const Header = () => {
 
 	const h1Variants = {
 		visible: {
-			textShadow: '0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF',
+			opacity: 1,
+			textShadow: ['0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF', '0px 0px 3px #FFF, 0px 0px 6px #FFF, 0px 0px 9px #FFF, 0px 0px 15px #FFF', '0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF'],
 			transition: {
 				duration: 0.5,
-				ease: 'easeOut',
+				ease: 'easeInOut',
 			}
 		},
 		hidden: {
-			textShadow: '0px 0px 3px #FFF, 0px 0px 6px #FFF, 0px 0px 9px #FFF, 0px 0px 15px #FFF'
+			opacity: 0,
+			textShadow: '0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF',
 		}
 	};
 

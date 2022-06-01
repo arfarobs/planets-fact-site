@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
-import { toggleMenuIsOpen } from '../header/menuSlice';
-import hamburger from'../../assets/images/icon-hamburger.svg';
+import { toggleMenuIsOpen } from './menuSlice';
+import hamburger from '../../../assets/images/icon-hamburger.svg';
 
 
 export const MenuBtn = () => {

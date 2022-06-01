@@ -13,7 +13,7 @@ import { React, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
-import { setMenuShouldFadeIn, setMainShouldFadeIn } from '../components/header/menuSlice';
+import { setMenuShouldFadeIn, setMainShouldFadeIn } from '../components/header/menu-btn/menuSlice';
 
 function App() {
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
