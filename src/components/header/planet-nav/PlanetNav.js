@@ -6,11 +6,12 @@ import chevron from '../../../assets/images/icon-chevron.svg';
 import { useEffect } from 'react';
 
 export const PlanetNav = () => {
-	const dispatch = useDispatch();
-	const controls = useAnimation();
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
 	const menuShouldClose = useSelector((state) => state.menu.menuShouldClose);
 	const menuShouldFadeIn = useSelector((state) => state.menu.menuShouldFadeIn);
+
+	const dispatch = useDispatch();
+	const controls = useAnimation();
 
 	const handleMenuAnimations = async () => {
 		if (!menuIsOpen) {
@@ -22,7 +23,8 @@ export const PlanetNav = () => {
 			await controls.start('openMobileMenu');
 			dispatch(setMenuShouldFadeIn(false));
 			dispatch(setMenuShouldClose(true));
-		} else if (!menuIsOpen && menuShouldClose) {
+		}
+		if (!menuIsOpen && menuShouldClose) {
 			dispatch(setMainShouldFadeIn(true));
 			await controls.start('fadeOut');
 			await controls.start('closeNavMenu');
@@ -35,24 +37,20 @@ export const PlanetNav = () => {
 		handleMenuAnimations();
 	}, [menuShouldFadeIn, menuIsOpen]);
 
+	const liAnimate = i => ({
+		opacity: 1,
+		transition: {
+			duration: 0.3,
+			delay: i * 0.1,
+		}
+	});
+
 	const liVariants = {
-		visible: i =>  ({
-			opacity: 1,
-			transition: {
-				duration: 0.3,
-				delay: i * 0.1,
-			}
-		}),
+		visible: liAnimate,
 		hidden: {
 			opacity: 0
 		},
-		openMobileMenu: i =>  ({
-			opacity: 1,
-			transition: {
-				duration: 0.3,
-				delay: i * 0.1,
-			}
-		}),
+		openMobileMenu: liAnimate,
 		mobileHidden: {
 			opacity: 0,
 			transition: {
@@ -95,7 +93,11 @@ export const PlanetNav = () => {
 
 				<Link 
 					className="planet-link link" 
-					onClick={() => dispatch(setMenuIsOpen(false))}
+					onClick={() => {
+						if (menuIsOpen) {
+							dispatch(setMenuIsOpen(false));
+						}
+					}}
 					to={index === 0 ? '/' : `/${name}`}>
 
 					<motion.span className="planet-link-icon" id={`${name}-icon`}></motion.span>

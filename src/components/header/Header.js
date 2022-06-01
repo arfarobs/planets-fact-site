@@ -5,16 +5,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export const Header = () => {
-	
-
-	console.count('rendered');
-
-	/*LOOK AT README!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
-	/*Refactor animations. No longer need controls.*/
-
-
-
 	const headerVariants = {
 		visible: {
 			y: 0,
@@ -35,7 +25,11 @@ export const Header = () => {
 	const h1Variants = {
 		visible: {
 			opacity: 1,
-			textShadow: ['0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF', '0px 0px 3px #FFF, 0px 0px 6px #FFF, 0px 0px 9px #FFF, 0px 0px 15px #FFF', '0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF'],
+			textShadow: [
+				'0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF', 
+				'0px 0px 3px #FFF, 0px 0px 6px #FFF, 0px 0px 9px #FFF, 0px 0px 15px #FFF', 
+				'0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF'
+			],
 			transition: {
 				duration: 0.5,
 				ease: 'easeInOut',

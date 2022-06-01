@@ -20,7 +20,6 @@ function App() {
 	const mainShouldFadeIn = useSelector((state) => state.menu.mainShouldFadeIn);
 	
 	const dispatch = useDispatch();
-
 	const location = useLocation();
 	const controls = useAnimation();
 
