@@ -31,7 +31,7 @@ export const InfoNav = () => {
 					className={index === 0 ? 'selected-info-nav-button info-nav-button' : 'info-nav-button'}
 					onClick={() => {
 						dispatch(toggleParagraphIsChanging(true));
-						setTimeout(() => dispatch(changeParagraph(title)),  '500');
+						setTimeout(() => dispatch(changeParagraph(title)),'500');
 						dispatch(setSurfaceStatus(index === 2 ? 'entering' : ''));
 						dispatch(toggleSurfaceHasBeenSelected(index === 2 ? true : false));
 					}} 

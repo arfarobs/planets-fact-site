@@ -29,6 +29,12 @@ export const menuSlice = createSlice({
 	}
 });
 
-export const { toggleMenuIsOpen, setMenuIsOpen, setMenuShouldClose, setMenuShouldFadeIn, setMainShouldFadeIn } = menuSlice.actions;
+export const { 
+	toggleMenuIsOpen,
+	setMenuIsOpen,
+	setMenuShouldClose,
+	setMenuShouldFadeIn,
+	setMainShouldFadeIn
+} = menuSlice.actions;
 
 export default menuSlice.reducer;

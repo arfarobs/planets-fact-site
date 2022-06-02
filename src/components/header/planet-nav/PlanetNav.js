@@ -47,15 +47,11 @@ export const PlanetNav = () => {
 
 	const liVariants = {
 		visible: liAnimate,
-		hidden: {
-			opacity: 0
-		},
+		hidden: { opacity: 0 },
 		openMobileMenu: liAnimate,
 		mobileHidden: {
 			opacity: 0,
-			transition: {
-				duration: 0
-			}
+			transition: { duration: 0 }
 		}
 	};
 
@@ -70,18 +66,12 @@ export const PlanetNav = () => {
 		},
 		closeNavMenu: {
 			display: 'none',
-			transition: {
-				duration: 0
-			}
+			transition: { duration: 0 }
 		},
 		fadeOut: {
 			opacity: 0,
-			transition: {
-				duration: 0.2,
-			},
-			transitionEnd: {
-				opacity: 1
-			}
+			transition: { duration: 0.2 },
+			transitionEnd: { opacity: 1 }
 		}
 	};
 
@@ -89,31 +79,44 @@ export const PlanetNav = () => {
 
 	const listItems = planetNames.map((name, index) => {
 		return (
-			<motion.li key={index} variants={liVariants} custom={index}>
-
+			<motion.li 
+				key={index} 
+				variants={liVariants} 
+				custom={index}
+			>
 				<Link 
 					className="planet-link link" 
+					to={index === 0 ? '/' : `/${name}`}
 					onClick={() => {
 						if (menuIsOpen) {
 							dispatch(setMenuIsOpen(false));
 						}
 					}}
-					to={index === 0 ? '/' : `/${name}`}>
-
-					<motion.span className="planet-link-icon" id={`${name}-icon`}></motion.span>
-
+				>
+					<motion.span 
+						className="planet-link-icon" 
+						id={`${name}-icon`}
+					>
+					</motion.span>
 					{name}
-
-					<img className="chevron" src={chevron} aria-hidden="true" alt=""/>
-
+					<img 
+						className="chevron" 
+						src={chevron} 
+						aria-hidden="true" 
+						alt=""
+					/>
 				</Link>
-
 			</motion.li>
 		);
 	});
 
 	return (
-		<motion.nav id="planet-nav" variants={navVariants} animate={controls} initial='hidden'>
+		<motion.nav 
+			id="planet-nav" 
+			variants={navVariants} 
+			animate={controls} 
+			initial='hidden'
+		>
 			<ul>
 				{listItems}
 			</ul>

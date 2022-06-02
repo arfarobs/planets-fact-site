@@ -4,7 +4,7 @@ import { PlanetNav } from './planet-nav/PlanetNav';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-export const Header = () => {
+export const Header = (() => {
 	const headerVariants = {
 		visible: {
 			y: 0,
@@ -55,11 +55,14 @@ export const Header = () => {
 			animate='visible'
 			initial='hidden'
 		>
-			<Link className="link" to="/">
+			<Link 
+				className="link" 
+				to="/"
+			>
 				<motion.h1 variants={h1Variants}>The Planets</motion.h1>
 			</Link>
 			<MenuBtn />
 			<PlanetNav />
 		</motion.header>
 	);
-};
+});

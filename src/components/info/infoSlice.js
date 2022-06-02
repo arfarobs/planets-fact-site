@@ -45,6 +45,12 @@ export const infoSlice = createSlice({
 	}
 });
 
-export const { changeParagraph, changeCurrentPage, toggleParagraphIsChanging, setSurfaceStatus, toggleSurfaceHasBeenSelected } = infoSlice.actions;
+export const { 
+	changeParagraph, 
+	changeCurrentPage, 
+	toggleParagraphIsChanging, 
+	setSurfaceStatus, 
+	toggleSurfaceHasBeenSelected 
+} = infoSlice.actions;
 
 export default infoSlice.reducer;

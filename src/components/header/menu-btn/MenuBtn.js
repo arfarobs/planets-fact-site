@@ -7,7 +7,6 @@ import hamburger from '../../../assets/images/icon-hamburger.svg';
 export const MenuBtn = () => {
 	const dispatch = useDispatch();
 	
-
 	const buttonVariants = {
 		visible: {
 			opacity: 1,
@@ -17,9 +16,7 @@ export const MenuBtn = () => {
 				delay: 0.4
 			}
 		},
-		hidden: {
-			opacity: 0
-		}
+		hidden: { opacity: 0 }
 	};
 
 	return (
