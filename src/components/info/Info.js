@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Paragraph } from './paragraph/Paragraph';
 
 export const Info = () => {
-	console.count('Info');
 	const heading = useSelector((state) => state.info.currentPage);
 	const wikiSrc = useSelector((state) => state.info.wikiSrc);
 
