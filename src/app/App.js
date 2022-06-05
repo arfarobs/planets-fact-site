@@ -1,5 +1,5 @@
 import './App.css';
-import { Header } from '../components/header/Header';
+import Header from '../components/header/Header';
 import { Mercury } from '../pages/mercury/Mercury';
 import { Venus } from '../pages/venus/Venus';
 import { Earth } from '../pages/earth/Earth';
@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import { setMenuShouldFadeIn, setMainShouldFadeIn } from '../components/header/menu-btn/menuSlice';
 
-function App() {
+const App = () => {
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
 	const mainShouldFadeIn = useSelector((state) => state.menu.mainShouldFadeIn);
 	
@@ -88,6 +88,6 @@ function App() {
 			</motion.main>
 		</>
 	);
-}
+};
 
 export default App;
