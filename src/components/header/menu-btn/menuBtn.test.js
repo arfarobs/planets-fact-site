@@ -13,6 +13,8 @@ import MenuBtn from './MenuBtn';
 const history = createMemoryHistory();
 
 /*Should I be testing it on different screen sizes?*/
+//Should I test if the img renders?
+//Should I test state being dispatched? From What I can gather on the internet, I think it is not necessary to test state being dispatched.
 
 test('It should render', () => {
 	render(

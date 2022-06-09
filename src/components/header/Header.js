@@ -39,14 +39,7 @@ const Header = (() => {
 			opacity: 0,
 			textShadow: '0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF, 0px 0px 0px #FFF',
 		}
-	};
-
-	
-
-	
-
-
-	
+	};	
 
 	return (
 		<motion.header 

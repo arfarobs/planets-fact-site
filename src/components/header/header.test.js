@@ -12,6 +12,8 @@ import Header from './header';
 
 const history = createMemoryHistory();
 
+//Have I missed anything?
+
 test('It should render.', () => {
 	render (
 		<Provider store={store}>

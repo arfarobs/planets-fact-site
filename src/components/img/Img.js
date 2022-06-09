@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { toggleParagraphIsChanging, setSurfaceStatus } from '../info/infoSlice';
 
 
-export const Img = () => {
+const Img = () => {
 	const currentSection = useSelector((state) => state.info.currentSection);
 	const currentPage = useSelector((state) => state.info.currentPage);
 	const paragraphIsChanging = useSelector((state) => state.info.paragraphIsChanging);
@@ -111,3 +111,5 @@ export const Img = () => {
 		</>
 	);
 };
+
+export default Img;

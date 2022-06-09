@@ -11,6 +11,11 @@ import PlanetNav from './PlanetNav';
 
 const history = createMemoryHistory();
 
+//Should I test the changePageColor function?
+//Should I change the current tests?
+//Should I test conditional attributes?
+//SHould I test if the img and span renders?
+
 
 test('It should render.', () => {
 	render(
