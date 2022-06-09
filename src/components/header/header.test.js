@@ -22,7 +22,7 @@ test('It should render.', () => {
 	);
 	
 	const header = screen.getByRole('banner');
-	const heading = screen.getByText('The Planets');
+	const heading = screen.getByRole('heading');
 
 	expect(header).toBeInTheDocument();
 	expect(heading).toBeInTheDocument();
@@ -37,7 +37,7 @@ test('Should redirect and update history.', () => {
 		</Provider>
 	)
 
-	userEvent.click(screen.getByText('The Planets'));
+	userEvent.click(screen.getByRole('heading'));
 
 	expect(history.location.pathname).toEqual('/');
 });

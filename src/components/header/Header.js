@@ -1,6 +1,6 @@
 import './Header.css';
-import { MenuBtn } from './menu-btn/MenuBtn';
-import { PlanetNav } from './planet-nav/PlanetNav';
+import MenuBtn from './menu-btn/MenuBtn';
+import PlanetNav from './planet-nav/PlanetNav';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 

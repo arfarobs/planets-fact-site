@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { changeCurrentPage } from '../../info/infoSlice';
 
 
-export const PlanetNav = () => {
+const PlanetNav = () => {
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
 	const menuShouldClose = useSelector((state) => state.menu.menuShouldClose);
 	const menuShouldFadeIn = useSelector((state) => state.menu.menuShouldFadeIn);
@@ -132,3 +132,5 @@ export const PlanetNav = () => {
 		</motion.nav>
 	);
 };
+
+export default PlanetNav;

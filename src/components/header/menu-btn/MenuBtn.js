@@ -4,7 +4,7 @@ import { toggleMenuIsOpen } from './menuSlice';
 import hamburger from '../../../assets/images/icon-hamburger.svg';
 
 
-export const MenuBtn = () => {
+const MenuBtn = () => {
 	const dispatch = useDispatch();
 	
 	const buttonVariants = {
@@ -36,3 +36,5 @@ export const MenuBtn = () => {
 		</>
 	);
 };
+
+export default MenuBtn;
