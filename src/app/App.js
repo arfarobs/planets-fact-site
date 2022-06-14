@@ -10,34 +10,64 @@ import { Uranus } from '../pages/uranus/Uranus';
 import { Neptune } from '../pages/neptune/Neptune';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { React, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
+import { AnimatePresence, animationControls } from 'framer-motion';
+import { useSelector } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import { setMenuShouldFadeIn, setMainShouldFadeIn } from '../components/header/menu-btn/menuSlice';
+
+
+import { store } from './store';
+
+export const handleMainAnimation = async (menuIsOpen, mainShouldFadeIn, controls, store) => {
+
+	if (menuIsOpen) {
+		await controls.start('fadeOut');
+		store.dispatch(setMenuShouldFadeIn(true));
+		controls.start('hidePage');
+	}
+	if (mainShouldFadeIn) {
+		await controls.start('displayPage');
+		await controls.start('fadeIn');
+		store.dispatch(setMainShouldFadeIn(false));
+	}
+};
+
+
 
 const App = () => {
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
 	const mainShouldFadeIn = useSelector((state) => state.menu.mainShouldFadeIn);
 	
-	const dispatch = useDispatch();
 	const location = useLocation();
 	const controls = useAnimation();
+	console.log(animationControls().subscribe());
+	console.log(controls.start);
 
-	const handleMainAnimation = async () => {
-		if (menuIsOpen) {
-			await controls.start('fadeOut');
-			dispatch(setMenuShouldFadeIn(true));
-			controls.start('hidePage');
-		}
+	const handleMenuOpening = async () => {
+		await controls.start('fadeOut');
+		store.dispatch(setMenuShouldFadeIn(true));
+		controls.start('hidePage');
+	}
+
+	const handleMenuClosing = async () => {
 		if (mainShouldFadeIn) {
 			await controls.start('displayPage');
 			await controls.start('fadeIn');
-			dispatch(setMainShouldFadeIn(false));
+			store.dispatch(setMainShouldFadeIn(false));
 		}
-	};
+	}
 
 	useEffect(() => {
-		handleMainAnimation();
+		if (menuIsOpen) {
+			handleMenuOpening();
+		};
+		if (mainShouldFadeIn) {
+			handleMenuClosing();
+		}
+	})
+
+	useEffect(() => {
+		handleMainAnimation(menuIsOpen, mainShouldFadeIn, controls, store);
 	}, [menuIsOpen, mainShouldFadeIn]);
 
 	const mainVariants = {

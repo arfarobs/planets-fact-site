@@ -15,6 +15,8 @@ const history = createMemoryHistory();
 //Should I change the current tests?
 //Should I test conditional attributes?
 //SHould I test if the img and span renders?
+// How should i test my conditional logic?
+// import slice. Set values to what they need to be. Test handle ... animations for each outcome. make sure all of the methods were called.
 
 
 test('It should render.', () => {
