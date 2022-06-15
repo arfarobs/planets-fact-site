@@ -10,7 +10,7 @@ import { Uranus } from '../pages/uranus/Uranus';
 import { Neptune } from '../pages/neptune/Neptune';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { React, useEffect } from 'react';
-import { AnimatePresence, animationControls } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import { setMenuShouldFadeIn, setMainShouldFadeIn } from '../components/header/menu-btn/menuSlice';
@@ -40,31 +40,6 @@ const App = () => {
 	
 	const location = useLocation();
 	const controls = useAnimation();
-	console.log(animationControls().subscribe());
-	console.log(controls.start);
-
-	const handleMenuOpening = async () => {
-		await controls.start('fadeOut');
-		store.dispatch(setMenuShouldFadeIn(true));
-		controls.start('hidePage');
-	}
-
-	const handleMenuClosing = async () => {
-		if (mainShouldFadeIn) {
-			await controls.start('displayPage');
-			await controls.start('fadeIn');
-			store.dispatch(setMainShouldFadeIn(false));
-		}
-	}
-
-	useEffect(() => {
-		if (menuIsOpen) {
-			handleMenuOpening();
-		};
-		if (mainShouldFadeIn) {
-			handleMenuClosing();
-		}
-	})
 
 	useEffect(() => {
 		handleMainAnimation(menuIsOpen, mainShouldFadeIn, controls, store);

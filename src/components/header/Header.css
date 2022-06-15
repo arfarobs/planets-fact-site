@@ -14,14 +14,6 @@ h1 {
   padding: 16px 24px;
 }
 
-#planet-menu-btn {
-  margin: 24px 24px 24px 0;
-  width: 24px;
-  height: 17px;
-  opacity: 1;
-  display: block;
-}
-
 #planet-nav {
   position: absolute;
   top: 69px;
@@ -120,7 +112,7 @@ h1 {
     padding: 0;
   }
 
-  #planet-menu-btn, .planet-link-icon, .chevron {
+  .planet-link-icon, .chevron {
     display: none;
   }
 
