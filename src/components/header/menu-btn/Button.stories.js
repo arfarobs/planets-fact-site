@@ -26,8 +26,6 @@ export default {
 			</div>
 		),
 	],
-	argTypes: {
-	}
 };
 
 const Story = (args) => 
@@ -36,7 +34,3 @@ const Story = (args) =>
 	</Provider>;
 
 export const Button = Story.bind({});
-
-Button.args = {
-
-};
