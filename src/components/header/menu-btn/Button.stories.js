@@ -8,6 +8,11 @@ import './menuBtn.css';
 export default {
 	title: 'Menu Button',
 	component: MenuBtn,
+	parameters: {
+		chromatic: {
+			viewports: [375, 768, 1440]
+		}
+	},
 	argTypes: {
 	}
 };
