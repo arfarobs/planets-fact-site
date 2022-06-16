@@ -1,36 +1,17 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { screen } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
-import { configureStore } from '@reduxjs/toolkit';
-import infoReducer from '../../info/infoSlice';
-import menuReducer from './menuSlice';
+import { createTestStore, testRender } from '../../../utils/testUtils';
 
 import MenuBtn from './MenuBtn';
 
-const history = createMemoryHistory();
 
-const store = configureStore({
-	reducer: {
-		info: infoReducer,
-		menu: menuReducer
-	}
-});
-const origDispatch = store.dispatch;
-store.dispatch = jest.fn(origDispatch);
+const store = createTestStore();
+
 
 test('It should render', () => {
-	render(
-		<Provider store={store}>
-			<Router location={history.location} navigator={history}>
-				<MenuBtn />
-			</Router>
-		</Provider>
-	);
+	testRender(<MenuBtn />, store);
 
 	const button = screen.getByRole('button');
 
@@ -38,13 +19,7 @@ test('It should render', () => {
 });
 
 test('It should dispatch the toggleMenuIsOpen action onClick', () => {
-	render(
-		<Provider store={store}>
-			<Router location={history.location} navigator={history}>
-				<MenuBtn />
-			</Router>
-		</Provider>
-	);
+	testRender(<MenuBtn />, store);
 
 	const button = screen.getByRole('button');
 	userEvent.click(button);
