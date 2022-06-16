@@ -10,7 +10,8 @@ export default {
 	component: MenuBtn,
 	parameters: {
 		chromatic: {
-			viewports: [375, 768, 1440]
+			viewports: [375, 768, 1440],
+			delay: 400
 		}
 	},
 	argTypes: {
