@@ -14,6 +14,18 @@ export default {
 			delay: 400
 		}
 	},
+	decorators: [
+		(Story) => (
+			<div style={{ 
+				display: 'flex',
+				justifyContent: 'flex-end',
+				background: '#000',
+				width: '100%'
+			}}>
+				<Story />
+			</div>
+		),
+	],
 	argTypes: {
 	}
 };
