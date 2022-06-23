@@ -37,7 +37,7 @@ test('Should redirect and update history.', () => {
 				<Header />
 			</Router>
 		</Provider>
-	)
+	);
 
 	userEvent.click(screen.getByRole('heading'));
 

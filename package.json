@@ -22,7 +22,8 @@
     "test-storybook": "test-storybook",
     "chromatic": "npx chromatic --project-token=65b4cd6cff2b --exit-zero-on-changes",
     "prepare": "husky install",
-		"test:nowatch": "react-scripts test --watchAll=false"
+		"test:nowatch": "react-scripts test --watchAll=false",
+		"lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
