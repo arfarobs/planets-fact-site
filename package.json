@@ -22,8 +22,11 @@
     "test-storybook": "test-storybook",
     "chromatic": "npx chromatic --project-token=65b4cd6cff2b --exit-zero-on-changes",
     "prepare": "husky install",
-		"test:nowatch": "react-scripts test --watchAll=false",
-		"lint": "eslint ."
+    "test:nowatch": "react-scripts test --watchAll=false",
+    "lint": "eslint ."
+  },
+	"lint-staged": {
+    "*.{js,jsx}": "eslint --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -77,6 +80,7 @@
     "eslint-plugin-storybook": "^0.5.12",
     "husky": "^8.0.0",
     "jest": "^27.5.1",
+    "lint-staged": "^13.0.2",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^18.1.0",
     "webpack": "^5.73.0"
