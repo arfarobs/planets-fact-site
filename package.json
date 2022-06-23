@@ -21,7 +21,8 @@
     "build-storybook": "build-storybook -s public",
     "test-storybook": "test-storybook",
     "chromatic": "npx chromatic --project-token=65b4cd6cff2b --exit-zero-on-changes",
-    "prepare": "husky install"
+    "prepare": "husky install",
+		"test:nowatch": "react-scripts test --watchAll=false"
   },
   "eslintConfig": {
     "extends": [
