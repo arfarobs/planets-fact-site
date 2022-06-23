@@ -29,7 +29,9 @@ const MenuBtn = () => {
 				animate='visible'
 				initial='hidden'
 				whileTap='whileTap'
+				data-testid="menu-btn"
 				id="planet-menu-btn" 
+				aria-label='menu'
 				onClick={() => {
 					dispatch(toggleMenuIsOpen());
 				}

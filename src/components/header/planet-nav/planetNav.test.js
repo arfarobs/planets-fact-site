@@ -83,4 +83,4 @@ test('It should redirect and update history.', () => {
 
 	userEvent.click(links[7]);
 	expect(history.location.pathname).toEqual('/neptune');
-})
+});
