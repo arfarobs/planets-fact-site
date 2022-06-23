@@ -5,4 +5,5 @@ npx lint-staged
 npm run test:nowatch
 npm run storybook
 npm run test-storybook
+npm run chromatic
 

@@ -86,5 +86,3 @@ MenuBtnBreakPoints.play = async ({ canvasElement }) => {
 		await expect(menuBtn).not.toBeVisible();
 	}
 };
-
-/*test*/
