@@ -79,10 +79,12 @@ ClickMenuBtn.play = async ({ canvasElement }) => {
 MenuBtnBreakPoints.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	const menuBtn = canvas.getByTestId('menu-btn');
-	
-	if (screen.innerWidth < 768) {
-		await expect(menuBtn).toBeVisible();
-	} else {
-		await expect(menuBtn).not.toBeVisible();
-	}
+
+	setTimeout(async () => {
+		if (window.innerWidth < 768) {
+			await expect(menuBtn).toBeVisible();
+		} else {
+			await expect(menuBtn).not.toBeVisible();
+		}
+	}, 900);
 };
