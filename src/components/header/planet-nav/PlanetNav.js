@@ -4,8 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMenuShouldClose, setMainShouldFadeIn, setMenuShouldFadeIn, setMenuIsOpen } from '../menu-btn/menuSlice';
 import chevron from '../../../assets/images/icon-chevron.svg';
 import { useEffect } from 'react';
+import './planetNav.css';
 import { changeCurrentPage } from '../../info/infoSlice';
 
+export const changePageColor = (index) => {
+	const pageColors = ['#419EBB', '#EDA249', '#6D2ED5', '#D14C32', '#D83A34', '#CD5120', '#1EC1A2', '#2D68F0'];
+	document.documentElement.style.setProperty('--pageColor', pageColors[index]);
+};
 
 const PlanetNav = () => {
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
@@ -14,11 +19,6 @@ const PlanetNav = () => {
 
 	const dispatch = useDispatch();
 	const controls = useAnimation();
-
-	const changePageColor = (index) => {
-		const pageColors = ['#419EBB', '#EDA249', '#6D2ED5', '#D14C32', '#D83A34', '#CD5120', '#1EC1A2', '#2D68F0'];
-		document.documentElement.style.setProperty('--pageColor', pageColors[index]);
-	};
 
 	const handleMenuAnimations = async () => {
 		if (!menuIsOpen) {
@@ -105,6 +105,7 @@ const PlanetNav = () => {
 					<motion.span 
 						className="planet-link-icon" 
 						id={`${name}-icon`}
+						data-testid='icon'
 					>
 					</motion.span>
 					{name}
