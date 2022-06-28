@@ -120,8 +120,6 @@ const PlanetNav = () => {
 		);
 	});
 
-	console.log(listItems);
-
 	return (
 		<motion.nav 
 			id="planet-nav" 

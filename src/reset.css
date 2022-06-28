@@ -56,3 +56,14 @@ button {
 	/* Corrects inability to style clickable `input` types in iOS */
 	-webkit-appearance: none;
 }
+
+/*My Resets*/
+
+* {
+	box-sizing: border-box;
+}
+
+.link {
+	text-decoration: none;
+	display: block;
+}

@@ -4,6 +4,10 @@ import { store } from '../../../app/store';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
+import '../../../assets/fonts/Antonio-Medium.ttf';
+import '../../../assets/fonts/Spartan-Bold.ttf';
+import '../../../assets/fonts/Spartan-Regular.ttf';
+
 
 import MenuBtn from './MenuBtn';
 import './menuBtn.css';

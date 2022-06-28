@@ -1,4 +1,5 @@
 import './App.css';
+import './fonts.css';
 import Header from '../components/header/Header';
 import { Mercury } from '../pages/mercury/Mercury';
 import { Venus } from '../pages/venus/Venus';
