@@ -1,27 +1,19 @@
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
-import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import React from 'react';
-import { Provider } from 'react-redux';
-import { store } from '../../app/store';
+import { testRender, createTestStore } from '../../utils/testUtils';
+
 
 import Header from './header';
 
 const history = createMemoryHistory();
-
-//Have I missed anything?
+const testStore = createTestStore();
 
 test('It should render.', () => {
-	render (
-		<Provider store={store}>
-			<Router location={history.location} navigator={history}>
-				<Header />
-			</Router>
-		</Provider>
-	);
+	testRender(<Header />, testStore);
 	
 	const header = screen.getByRole('banner');
 	const heading = screen.getByRole('heading');
@@ -31,13 +23,7 @@ test('It should render.', () => {
 });
 
 test('Should redirect and update history.', () => {
-	render (
-		<Provider store={store}>
-			<Router location={history.location} navigator={history}>
-				<Header />
-			</Router>
-		</Provider>
-	);
+	testRender(<Header />, testStore);
 
 	userEvent.click(screen.getByRole('heading'));
 
