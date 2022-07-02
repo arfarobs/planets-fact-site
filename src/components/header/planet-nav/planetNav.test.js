@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import { changePageColor } from './PlanetNav';
+import { changePageColor, liAnimate } from './PlanetNav';
 
 import PlanetNav from './PlanetNav';
 import { createTestStore, testRender } from '../../../utils/testUtils';
@@ -151,4 +151,20 @@ test('The list items map correctly.', () => {
 	chevrons.forEach(chevron => {
 		expect(chevron).toBeInTheDocument();
 	});
+});
+
+test('liAnimate should return the correct object.', () => {
+	testRender(<PlanetNav/>, store);
+
+	const expectedResult = {
+		opacity: 1,
+		transition: {
+			duration: 0.3,
+			delay: 0.4,
+		}
+	};
+
+	const actualResult = liAnimate(4);
+
+	expect(actualResult).toEqual(expectedResult);
 });

@@ -5,10 +5,10 @@ import userEvent from '@testing-library/user-event';
 import { createTestStore, testRender } from '../../../utils/testUtils';
 
 import MenuBtn from './MenuBtn';
+import { expect } from '@storybook/jest';
 
 
 const store = createTestStore();
-
 
 test('It should render', () => {
 	testRender(<MenuBtn />, store);

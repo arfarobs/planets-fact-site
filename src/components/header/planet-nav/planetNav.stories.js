@@ -3,12 +3,13 @@ import { Provider } from 'react-redux';
 import { store } from '../../../app/store';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
+import { waitFor, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 
 import PlanetNav from './PlanetNav';
 import './planetNav.css';
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { setMenuShouldClose, setMenuShouldFadeIn, toggleMenuIsOpen } from '../menu-btn/menuSlice';
 
 const history = createMemoryHistory();
 
@@ -34,6 +35,13 @@ const Story = (args) =>
 	</Router>;
 
 export const FadeInNav = Story.bind({});
+export const MobileNav = Story.bind({});
+
+MobileNav.parameters = {
+	viewport: {
+		defaultViewport: 'mobile'
+	}
+};
 
 FadeInNav.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
@@ -47,7 +55,42 @@ FadeInNav.play = async ({ canvasElement }) => {
 	for (let i = 0; i < listItems.length; i++) {
 		setTimeout(async () => {
 			await expect(listItems[i]).toBeVisible();
-			console.log(listItems[i].style.opacity);
 		}, 500 + i * 100 + 300);
+	}
+};
+
+MobileNav.play = async ({ canvasElement }) => {
+	if (window.innerWidth < 768) {
+		const canvas = within(canvasElement);
+		const nav = canvas.getByTestId('planet-nav');
+		const listItems = canvas.getAllByTestId('planet-list-item');
+
+		await expect(nav).not.toBeVisible();
+
+		store.dispatch(toggleMenuIsOpen());
+		store.dispatch(setMenuShouldFadeIn(true));
+
+		await waitFor(async () => {
+			await expect(nav).toHaveStyle({opacity: 1});
+		});
+		for await (const listItem of listItems) {
+			await expect(listItem).not.toBeVisible();
+		}
+		for await (const listItem of listItems) {
+			await waitFor(async () => {
+				await expect(listItem).toBeVisible();
+			});
+		}
+
+		store.dispatch(setMenuShouldFadeIn(false));
+		store.dispatch(setMenuShouldClose(true));
+		store.dispatch(toggleMenuIsOpen());
+
+		await waitFor(async () => {
+			await expect(nav).toHaveStyle({opacity: 0});
+		});
+		await waitFor(async () => {
+			await expect(nav).toHaveStyle({display: 'none'});
+		});
 	}
 };

@@ -25,7 +25,7 @@
     "test:nowatch": "react-scripts test --watchAll=false",
     "lint": "eslint ."
   },
-	"lint-staged": {
+  "lint-staged": {
     "*.{js,jsx}": "eslint --fix"
   },
   "eslintConfig": {

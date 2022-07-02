@@ -1,25 +1,20 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../../../app/store';
-import { userEvent, within } from '@storybook/testing-library';
+import { userEvent, within, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-
-import '../../../assets/fonts/Antonio-Medium.ttf';
-import '../../../assets/fonts/Spartan-Bold.ttf';
-import '../../../assets/fonts/Spartan-Regular.ttf';
-
 
 import MenuBtn from './MenuBtn';
 import './menuBtn.css';
+import { setMenuIsOpen } from './menuSlice';
 
 export default {
 	title: 'Menu Button',
 	component: MenuBtn,
 	parameters: {
-		chromatic: {
-			viewports: [375],
-			delay: 400
-		}
+		viewport: {
+			defaultViewport: 'mobile'
+		},
 	},
 	decorators: [
 		(Story) => (
@@ -40,8 +35,7 @@ const Story = (args) =>
 		<MenuBtn {...args} />
 	</Provider>;
 
-export const FadeInMenuBtn = Story.bind({});
-export const ClickMenuBtn = Story.bind({});
+export const MenuBtnInteractions = Story.bind({});
 export const MenuBtnBreakPoints = Story.bind({});
 
 MenuBtnBreakPoints.parameters = {
@@ -50,45 +44,24 @@ MenuBtnBreakPoints.parameters = {
 	}
 };
 
-FadeInMenuBtn.play = async ({ canvasElement }) => {
+MenuBtnInteractions.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	const menuBtn = canvas.getByTestId('menu-btn');
 	menuBtn.style.display = 'block';
+	store.dispatch(setMenuIsOpen(false));
 
 	await expect(menuBtn).not.toBeVisible();
-	setTimeout(async () => {
+	await waitFor(async () => {
+		await expect(menuBtn).toHaveStyle({opacity: 1});
 		await expect(menuBtn).toBeVisible();
-	}, 900);
-};
-
-ClickMenuBtn.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	const menuBtn = canvas.getByTestId('menu-btn');
-	menuBtn.style.display = 'block';
-
-	const opacity = () => {
-		return parseFloat(menuBtn.style.opacity);
-	};
+	});
 
 	await userEvent.click(menuBtn);
-	setTimeout(async () => {
-		await expect(opacity()).toBe(0.25);
-		await userEvent.click(menuBtn);
-	}, 1500);
-	setTimeout(async () => {
-		await expect(opacity()).toBe(1);
-	}, 3000);
-};
-
-MenuBtnBreakPoints.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	const menuBtn = canvas.getByTestId('menu-btn');
-
-	setTimeout(async () => {
-		if (window.innerWidth < 768) {
-			await expect(menuBtn).toBeVisible();
-		} else {
-			await expect(menuBtn).not.toBeVisible();
-		}
-	}, 900);
+	await waitFor(async () => {
+		await expect(menuBtn).toHaveStyle({opacity: 0.25});
+	});
+	await userEvent.click(menuBtn);
+	await waitFor(async () => {
+		await expect(menuBtn).toHaveStyle({opacity: 1});
+	});
 };

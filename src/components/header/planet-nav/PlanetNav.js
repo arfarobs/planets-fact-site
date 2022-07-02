@@ -12,6 +12,14 @@ export const changePageColor = (index) => {
 	document.documentElement.style.setProperty('--pageColor', pageColors[index]);
 };
 
+export const liAnimate = i => ({
+	opacity: 1,
+	transition: {
+		duration: 0.3,
+		delay: i * 0.1,
+	}
+});
+
 const PlanetNav = () => {
 	const menuIsOpen = useSelector((state) => state.menu.menuIsOpen);
 	const menuShouldClose = useSelector((state) => state.menu.menuShouldClose);
@@ -44,13 +52,7 @@ const PlanetNav = () => {
 		handleMenuAnimations();
 	}, [menuShouldFadeIn, menuIsOpen]);
 
-	const liAnimate = i => ({
-		opacity: 1,
-		transition: {
-			duration: 0.3,
-			delay: i * 0.1,
-		}
-	});
+	
 
 	const liVariants = {
 		visible: liAnimate,
@@ -90,6 +92,7 @@ const PlanetNav = () => {
 				key={index} 
 				variants={liVariants} 
 				custom={index}
+				data-testid='planet-list-item'
 			>
 				<Link 
 					className="planet-link link" 
@@ -126,6 +129,7 @@ const PlanetNav = () => {
 			variants={navVariants} 
 			animate={controls} 
 			initial='hidden'
+			data-testid='planet-nav'
 		>
 			<ul>
 				{listItems}
