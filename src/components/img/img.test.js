@@ -1,29 +1,37 @@
-import { render, screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { testRender, createTestStore } from '../../utils/testUtils';
 
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 import React from 'react';
-import { Provider } from 'react-redux';
-import { store } from '../../app/store';
 
 import Img from './Img';
+import { changeParagraph } from '../info/infoSlice';
 
-const history = createMemoryHistory();
+const store = createTestStore();
 
-/*Should I test the conditional redering here or elsewhere? 
-- Should I check if the correct image is being rendered?*/
+test('It should render the primary Img at all times. It should only render the secondary img when the surface section is selected.', async () => {
+	testRender(<Img />, store);
 
-test('It should render primaryImg. It should not render the secondaryImg.', () => {
-	render (
-		<Provider store={store}>
-			<Router location={history.location} navigator={history}>
-				<Img />
-			</Router>
-		</Provider>
-	);
+	const state = store.getState();
+	const primaryAlt = state.info.currentPage;
+	const secondaryAlt = `${primaryAlt} geology`;
+	const primaryImg = screen.getByAltText(primaryAlt);
+	const secondaryImg = screen.queryByAltText(secondaryAlt);
 
-	const primaryImg = screen.getByRole('img');
-
+	expect(state.info.currentSection).toBe('overview');
 	expect(primaryImg).toBeInTheDocument();
+	expect(secondaryImg).toBe(null);
+
+	store.dispatch(changeParagraph('surface'));
+
+	waitFor(async () => {
+		expect(secondaryImg).not.toBe(null);
+		expect(secondaryImg).toBeInTheDocument();
+	});
+
+	store.dispatch(changeParagraph('structure'));
+
+	waitFor(async () => {
+		expect(secondaryImg).toBe(null);
+	});
 });

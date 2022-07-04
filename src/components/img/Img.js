@@ -21,7 +21,6 @@ const Img = () => {
 	const animateImgChange = async () => {
 		if (surfaceStatus === 'entering') {
 			await controls.start('exit');
-			await controls.start('enter');
 			await controls.start('enterSecondary');
 			dispatch(setSurfaceStatus());
 		} else if (surfaceStatus === 'exiting') {
@@ -45,11 +44,20 @@ const Img = () => {
 		}
 	});
 
+	const enter = {
+		scale: 1,
+		opacity: 1,
+		transition: {
+			duration: 0.5,
+			ease: 'easeOut'
+		}
+	};
+
 	const primaryImgVariants = {
 		visible: {
 			scale: 1,
 			transition: {
-				duration: 0.5,
+				duration: 0.2,
 				delay: 1,
 				ease: 'easeOut'
 			}
@@ -65,14 +73,8 @@ const Img = () => {
 				ease: 'easeIn'
 			}
 		},
-		enter: {
-			scale: 1,
-			opacity: 1,
-			transition: {
-				duration: 0.5,
-				ease: 'easeOut'
-			}
-		}
+		enter: enter,
+		enterSecondary: enter
 	};
 
 	const secondaryImgVariants = {

@@ -4,11 +4,12 @@ import { Provider } from 'react-redux';
 import { store } from '../../app/store';
 import { Router } from 'react-router-dom';
 import { waitFor, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
 
 
 import Header from './Header';
 import './Header.css';
-import { expect } from '@storybook/jest';
 
 const history = createMemoryHistory();
 
