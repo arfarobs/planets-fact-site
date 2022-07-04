@@ -3,10 +3,10 @@ import { Provider } from 'react-redux';
 import { store } from '../../../app/store';
 import { userEvent, within, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import { setMenuIsOpen } from './menuSlice';
 
 import MenuBtn from './MenuBtn';
 import './menuBtn.css';
-import { setMenuIsOpen } from './menuSlice';
 
 export default {
 	title: 'Menu Button',
