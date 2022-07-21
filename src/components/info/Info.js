@@ -1,7 +1,7 @@
 import './Info.css';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-import { Paragraph } from './paragraph/Paragraph';
+import Paragraph from './paragraph/Paragraph';
 
 export const Info = () => {
 	const heading = useSelector((state) => state.info.currentPage);

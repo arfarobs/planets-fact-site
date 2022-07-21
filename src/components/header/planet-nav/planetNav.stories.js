@@ -15,16 +15,7 @@ const history = createMemoryHistory();
 
 export default {
 	title: 'Planet Navigation',
-	component: PlanetNav,
-	decorators: [
-		(Story) => (
-			<div style={{
-				background: '#000'
-			}}>
-				<Story />
-			</div>
-		)
-	]
+	component: PlanetNav
 };
 
 const Story = (args) =>

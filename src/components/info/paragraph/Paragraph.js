@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect } from 'react';
 
-export const Paragraph = () => {
+const Paragraph = () => {
 	const paragraph = useSelector((state) => state.info.paragraph);
 	const paragraphIsChanging = useSelector((state) => state.info.paragraphIsChanging);
 
@@ -49,9 +49,12 @@ export const Paragraph = () => {
 				custom={2}
 				animate={controls}
 				initial='hidden'
+				data-testid='paragraph'
 			>
 				{paragraph}
 			</motion.p>
 		</>
 	);
 };
+
+export default Paragraph;

@@ -35,6 +35,15 @@ export const parameters = {
   },
 	viewport: {
 		viewports: customViewports
-	}
+	},
+	backgrounds: {
+    default: 'site background',
+    values: [
+      {
+        name: 'site background',
+        value: '#070724',
+      },
+    ],
+  },
 }
 

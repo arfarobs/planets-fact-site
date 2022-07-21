@@ -8,6 +8,7 @@ import { setMenuIsOpen } from './menuSlice';
 import MenuBtn from './MenuBtn';
 import './menuBtn.css';
 
+
 export default {
 	title: 'Menu Button',
 	component: MenuBtn,
@@ -18,11 +19,9 @@ export default {
 	},
 	decorators: [
 		(Story) => (
-			<div style={{ 
+			<div style={{
 				display: 'flex',
-				justifyContent: 'flex-end',
-				background: '#000',
-				width: '100%'
+				justifyContent: 'flex-end'
 			}}>
 				<Story />
 			</div>

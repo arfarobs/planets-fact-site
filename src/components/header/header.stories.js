@@ -31,7 +31,6 @@ HeaderAnimations.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	const header = canvas.getByRole('banner');
 	const heading = canvas.getByRole('heading');
-	header.style.background = '#000';
 
 	await expect(header).toHaveStyle({transform: 'matrix(1, 0, 0, 1, 0, -100)'});
 	await expect(heading).toHaveStyle({opacity: 0});
