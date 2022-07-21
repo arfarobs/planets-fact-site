@@ -37,6 +37,8 @@ HeaderAnimations.play = async ({ canvasElement }) => {
 
 	await waitFor(async () => {
 		await expect(header).toHaveStyle({transform: 'none'});
+	});
+	await waitFor(async () => {
 		await expect(heading).toHaveStyle({opacity: 1});
 	});
 };

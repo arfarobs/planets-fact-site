@@ -34,6 +34,7 @@ const Info = () => {
 			<motion.p className="source" 
 				variants={variants} 
 				custom={3}
+				data-testid="source"
 			>Source :&nbsp;
 				<motion.a 
 					variants={variants}
