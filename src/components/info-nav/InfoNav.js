@@ -4,7 +4,7 @@ import { changeParagraph, toggleParagraphIsChanging, setSurfaceStatus, toggleSur
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export const InfoNav = () => {
+const InfoNav = () => {
 	const currentSection = useSelector((state) => state.info.currentSection);
   
 	const dispatch = useDispatch();
@@ -36,10 +36,13 @@ export const InfoNav = () => {
 						dispatch(toggleSurfaceHasBeenSelected(index === 2 ? true : false));
 					}} 
 				>
-					<span className="info-nav-number">0{index + 1}</span>
-					{index === 1 && <span className="tablet-title">internal&nbsp;</span>}
-					<h3>{title}</h3>
-					{index === 2 && <span className="tablet-title">&nbsp;geology</span>}
+					<span className="info-nav-number" data-testid="info-nav-number">0{index + 1}</span>
+					
+					<h3>
+						{index === 1 && <span className="tablet-title">internal&nbsp;</span>}
+						{title}
+						{index === 2 && <span className="tablet-title">&nbsp;geology</span>}
+					</h3>
 				</button>
 			</motion.li>
 		);});
@@ -52,3 +55,5 @@ export const InfoNav = () => {
 		</nav>
 	);
 };
+
+export default InfoNav;

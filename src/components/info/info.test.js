@@ -1,4 +1,3 @@
-import { expect } from '@storybook/jest';
 import { screen } from '@testing-library/react';
 import { createTestStore, testRender } from '../../utils/testUtils';
 import '@testing-library/jest-dom';
