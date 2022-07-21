@@ -3,18 +3,18 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import Paragraph from './paragraph/Paragraph';
 
-export const Info = () => {
+export const variants = {
+	visible: i => ({
+		opacity: i === 3 ? 0.5 : 1,
+		transition: { delay: i * 0.2 },
+	}),
+	hidden: { opacity: 0 },
+	exit: { opacity: 0 },
+};
+
+const Info = () => {
 	const heading = useSelector((state) => state.info.currentPage);
 	const wikiSrc = useSelector((state) => state.info.wikiSrc);
-
-	const variants = {
-		visible: i => ({
-			opacity: i === 3 ? 0.5 : 1,
-			transition: { delay: i * 0.2 },
-		}),
-		hidden: { opacity: 0 },
-		exit: { opacity: 0 },
-	};
   
 	return (
 		<motion.div 
@@ -49,3 +49,5 @@ export const Info = () => {
 		</motion.div>
 	);
 };
+
+export default Info;

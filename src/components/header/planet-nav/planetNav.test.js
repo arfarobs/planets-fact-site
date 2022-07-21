@@ -154,7 +154,6 @@ test('The list items map correctly.', () => {
 });
 
 test('liAnimate should return the correct object.', () => {
-	testRender(<PlanetNav/>, store);
 
 	const expectedResult = {
 		opacity: 1,
