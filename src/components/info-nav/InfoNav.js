@@ -2,7 +2,6 @@ import './InfoNav.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeParagraph, toggleParagraphIsChanging, setSurfaceStatus, toggleSurfaceHasBeenSelected } from '../info/infoSlice';
 import { useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 const InfoNav = () => {
 	const currentSection = useSelector((state) => state.info.currentSection);
@@ -25,7 +24,7 @@ const InfoNav = () => {
 	const navTitles = ['overview', 'structure', 'surface'];
 	const navListItems = navTitles.map((title, index) => {
 		return (
-			<motion.li key={index}>
+			<li key={index}>
 				<button 
 					data-title={title}
 					className={index === 0 ? 'selected-info-nav-button info-nav-button' : 'info-nav-button'}
@@ -44,7 +43,7 @@ const InfoNav = () => {
 						{index === 2 && <span className="tablet-title">&nbsp;geology</span>}
 					</h3>
 				</button>
-			</motion.li>
+			</li>
 		);});
 
 	return (
