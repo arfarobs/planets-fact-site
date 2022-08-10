@@ -5,7 +5,7 @@ import { setMenuShouldClose, setMainShouldFadeIn, setMenuShouldFadeIn, setMenuIs
 import chevron from '../../../assets/images/icon-chevron.svg';
 import { useEffect } from 'react';
 import './planetNav.css';
-import { changeCurrentPage } from '../../info/infoSlice';
+import { changeCurrentPage} from '../../info/infoSlice';
 
 export const changePageColor = (index) => {
 	const pageColors = ['#419EBB', '#EDA249', '#6D2ED5', '#D14C32', '#D83A34', '#CD5120', '#1EC1A2', '#2D68F0'];

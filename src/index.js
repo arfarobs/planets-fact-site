@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './reset.css';
 import App from './app/App';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 
@@ -10,9 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<BrowserRouter>
+			<MemoryRouter
+				initialEntries={['/']}>
 				<App />
-			</BrowserRouter>
+			</MemoryRouter>
 		</Provider>
 	</React.StrictMode>
 );
