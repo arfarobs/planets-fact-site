@@ -100,16 +100,18 @@ const Img = () => {
 
 	return (
 		<div className="image-container">
-			<motion.img 
-				className="planet-img" 
-				src={primaryImgSrc} 
-				alt={currentPage} 
-				variants={primaryImgVariants}
-				exit='exit'
-				initial='hidden'
-				animate={controls}
-				style={currentPage === 'saturn' ? {'margin-right': '105px'} : {'margin-right': '130px'}}
-			/>
+			<span className="image-wrapper">
+				<motion.img 
+					className="planet-img" 
+					src={primaryImgSrc} 
+					alt={currentPage} 
+					variants={primaryImgVariants}
+					exit='exit'
+					initial='hidden'
+					animate={controls}
+					style={currentPage === 'saturn' ? {marginRight: '105px'} : {marginRight: '130px'}}
+				/>
+			</span>
 			{secondaryImg}
 		</div>
 	);
