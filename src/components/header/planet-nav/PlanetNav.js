@@ -96,7 +96,7 @@ const PlanetNav = () => {
 			>
 				<Link 
 					className="planet-link link" 
-					to={index === 0 ? '/' : `/${name}`}
+					to={index === 2 ? '/' : `/${name}`}
 					onClick={() => {
 						if (menuIsOpen) {
 							dispatch(setMenuIsOpen(false));

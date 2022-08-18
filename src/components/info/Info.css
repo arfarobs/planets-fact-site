@@ -69,7 +69,7 @@ h2 {
   .tablet-container {
     flex-direction: column;
     min-width: unset;
-    margin: 0 0 0 300px;
+		margin: 0;
   }
 
   .info-container {

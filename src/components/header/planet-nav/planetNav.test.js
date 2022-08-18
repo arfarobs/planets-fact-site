@@ -76,7 +76,7 @@ test('It should redirect and update history. It should update the page color.', 
 	const pageColor = () => getComputedStyle(document.documentElement).getPropertyValue('--pageColor');
 
 	userEvent.click(links[0]);
-	expect(history.location.pathname).toEqual('/');
+	expect(history.location.pathname).toEqual('/mercury');
 	expect(pageColor()).toBe('#419EBB');
 
 	userEvent.click(links[1]);
@@ -84,7 +84,7 @@ test('It should redirect and update history. It should update the page color.', 
 	expect(pageColor()).toBe('#EDA249');
 
 	userEvent.click(links[2]);
-	expect(history.location.pathname).toEqual('/earth');
+	expect(history.location.pathname).toEqual('/');
 	expect(pageColor()).toBe('#6D2ED5');
 
 	userEvent.click(links[3]);
@@ -116,7 +116,7 @@ test('The list items map correctly.', () => {
 	const chevrons = screen.getAllByRole('img', {hidden: true});
 
 	expect(links[0]).toHaveTextContent('mercury');
-	expect(links[0]).toHaveAttribute('href', '/');
+	expect(links[0]).toHaveAttribute('href', '/mercury');
 	expect(icons[0]).toHaveAttribute('id', 'mercury-icon');
 
 	expect(links[1]).toHaveTextContent('venus');
@@ -124,7 +124,7 @@ test('The list items map correctly.', () => {
 	expect(icons[1]).toHaveAttribute('id', 'venus-icon');
 
 	expect(links[2]).toHaveTextContent('earth');
-	expect(links[2]).toHaveAttribute('href', '/earth');
+	expect(links[2]).toHaveAttribute('href', '/');
 	expect(icons[2]).toHaveAttribute('id', 'earth-icon');
 
 	expect(links[3]).toHaveTextContent('mars');
