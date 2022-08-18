@@ -2,6 +2,7 @@ import './Info.css';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import Paragraph from './paragraph/Paragraph';
+import srcIcon from '../../assets/images/icon-source.svg';
 
 export const variants = {
 	visible: i => ({
@@ -45,6 +46,7 @@ const Info = () => {
 					rel="noreferrer"
 				>
           Wikipedia
+					<img src={srcIcon} />
 				</motion.a>
 			</motion.p>
 		</motion.div>
