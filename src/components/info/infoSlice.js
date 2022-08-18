@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { data } from '../../app/data';
 
 const initialState = {
-	currentPage: 'mercury',
+	currentPage: 'earth',
 	currentSection: 'overview',
-	paragraph: 'Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun\'s planets. Mercury is one of four terrestrial planets in the Solar System, and is a rocky body like Earth.',
-	stats: ['58.6 days', '87.97 days', '2439.7 km', '460°c'],
-	wikiSrc: 'https://en.wikipedia.org/wiki/Mercury_(planet)',
+	paragraph: 'Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth\'s surface is land with remaining 70.8% is covered with water. Earth\'s distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.',
+	stats: ['0.99 days', '365.26 days', '6,371 km', '16°c'],
+	wikiSrc: 'https://en.wikipedia.org/wiki/Earth',
 	paragraphIsChanging: false,
 	surfaceStatus: '',
 	surfaceHasBeenSelected: false
