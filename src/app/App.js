@@ -81,9 +81,9 @@ const App = () => {
 			<motion.main animate={controls} variants={mainVariants}>
 				<AnimatePresence exitBeforeEnter>
 					<Routes location={location} key={location.key}>
+						<Route path="/" element={<Earth />} />
 						<Route path="/marcury" element={<Mercury />} />
 						<Route path="/venus" element={<Venus />} />
-						<Route path="/" element={<Earth />} />
 						<Route path="/mars" element={<Mars />} />
 						<Route path="/jupiter" element={<Jupiter />} />
 						<Route path="/saturn" element={<Saturn />} />
