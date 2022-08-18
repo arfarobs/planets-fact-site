@@ -53,7 +53,7 @@ FadeInNav.play = async ({ canvasElement }) => {
 MobileNav.play = async ({ canvasElement }) => {
 	if (window.innerWidth < 768) {
 		const canvas = within(canvasElement);
-		const nav = canvas.getByTestId('planet-nav');
+		const nav = canvas.getByTestId('planet-navigation');
 		const listItems = canvas.getAllByTestId('planet-list-item');
 
 		await expect(nav).not.toBeVisible();

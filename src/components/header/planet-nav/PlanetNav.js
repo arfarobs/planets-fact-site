@@ -129,7 +129,7 @@ const PlanetNav = () => {
 			variants={navVariants} 
 			animate={controls} 
 			initial='hidden'
-			data-testid='planet-nav'
+			data-testid='planet-navigation'
 		>
 			<ul>
 				{listItems}

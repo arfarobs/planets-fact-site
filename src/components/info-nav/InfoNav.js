@@ -37,11 +37,11 @@ const InfoNav = () => {
 				>
 					<span className="info-nav-number" data-testid="info-nav-number">0{index + 1}</span>
 					
-					<h3>
+					<p>
 						{index === 1 && <span className="tablet-title">internal&nbsp;</span>}
 						{title}
 						{index === 2 && <span className="tablet-title">&nbsp;geology</span>}
-					</h3>
+					</p>
 				</button>
 			</li>
 		);});
